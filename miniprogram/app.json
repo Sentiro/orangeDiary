@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/habit/habit",
+    "pages/posts/posts",
+    "pages/myInfo/info",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -23,6 +26,25 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
-  
+  "style": "v2",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath":  "pages/habit/habit",
+        "text": "打卡"
+      },
+      {
+        "pagePath": "pages/diary/diary",
+        "text": "日记"
+      },
+      {
+        "pagePath":"pages/posts/posts",
+        "text": "广场"
+      },
+      {
+        "pagePath": "pages/myInfo/info",
+        "text": "个人信息"
+      }
+    ]
+  }
 }
