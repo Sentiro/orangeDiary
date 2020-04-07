@@ -16,6 +16,20 @@ App({
       })
     }
 
-    this.globalData = {}
+    this.globalData = { 
+      currentDate: new Date()
+    }
   }
+
+  
 })
+
+/*
+//获取年份  
+var Y = date.getFullYear();
+//获取月份  
+var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+//获取当日日期 
+var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+console.log("当前时间：" + Y + '年' + M + '月' + D + '日');
+*/

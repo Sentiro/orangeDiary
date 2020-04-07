@@ -1,18 +1,26 @@
 // miniprogram/pages/habit/habit.js
+var util = require('../../utils.js');
 Page({
-
+  dayClick: function (event) {
+    console.log(event.detail);
+    this.setData({ date: "Hello World" })
+  },
   /**
    * 页面的初始数据
    */
   data: {
-
+    date: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var time = util.formatTime(new Date());
+    // 再通过setData更改Page()里面的data，动态更新页面的数据
+    this.setData({
+      date: time
+    });
   },
 
   /**

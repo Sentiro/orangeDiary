@@ -1,3 +1,4 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "calendar": "plugin://calendar/calendar"}
 }
