@@ -1,32 +1,45 @@
 <!--miniprogram/pages/habit/habit.wxml-->
 <scroll-view scroll-y class="habitPage">
 <view class="dailyHabits">
+<!--悬浮按钮-->
+<icon type="success" size="50" class="post" bindtap="onPostClick"/>
 <!--日期显示-->
-  <view class="cu-bar bg-white">
+  <view class="cu-bar bg-white" bindtap="showCalendar">
     <view class="action sub-title">
-      <text class="text-xl text-bold text-green">{{date}} {{date.month}}</text>
+      <text class="text-xl text-bold text-green">{{date}}</text>
       <text class="bg-green"></text>
       <!-- last-child选择器-->
     </view>
   </view> 
 <!--日历-->
+<view hidden="{{calendarHide}}">
 <calendar calendar-style="calendar" binddayClick="dayClick" />
+</view>
 <!--正在进行的习惯-->
 <!--今日习惯-->
 
 </view>
-
-<scroll-view scroll-x class="bg-white nav text-center">
-  <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0">
+<!--个人和组队导航栏-->
+<scroll-view scroll-x class="bg-green nav text-center">
+<!--"pages/habit/myHabits/myHabits"-->
+  <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0" data-name="myHabits">
     <text class="cuIcon-camerafill"></text> 个人
   </view>
-  <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1">
+  <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1" data-name="team">
     <text class="text-yellow cuIcon-upstagefill"></text> 组队
   </view>
 </scroll-view>
-<view class="bg-img padding-bottom-xl" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big10007.jpg');height: 207rpx;">
+
+<!--个人-->
+<view wx:if="{{TabCur==='0'}}">
+  <view class="bg-img padding-bottom-xl" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big10007.jpg');height: 207rpx;">
     <view class="bg-shadeTop padding padding-bottom-xl">
       上面开始
     </view>
   </view>
+<import src="/pages/habit/myHabits/myHabits.wxml"/>
+<template is="myHabits"> </template> 
+</view>
+
+<!--组队-->
 </scroll-view>

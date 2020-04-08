@@ -16,7 +16,9 @@
     "pages/openapi/cloudid/cloudid",
     "pages/im/im",
     "pages/im/room/room",
-    "pages/diary/diary"
+    "pages/diary/diary",
+    "pages/habit/myHabits/myHabits",
+    "pages/habit/team/team"
   ],
   "plugins": {
     "calendar": {
@@ -36,7 +38,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath":  "pages/habit/habit",
+        "pagePath": "pages/habit/habit",
         "text": "打卡"
       },
       {
@@ -44,7 +46,7 @@
         "text": "日记"
       },
       {
-        "pagePath":"pages/posts/posts",
+        "pagePath": "pages/posts/posts",
         "text": "广场"
       },
       {

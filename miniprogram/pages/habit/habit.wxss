@@ -4,3 +4,14 @@
     padding-top: 10px;       /*上内边距为 10px*/
     border-radius: 15px;     /*添加边框圆角*/
 }
+.post {
+    float: right;
+    background-color: #ffffff;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;  
+    border: 0 solid #ffffff;
+    border-radius: 500px;
+    box-shadow: 4px 1px 1px #cccccc;
+
+}
