@@ -6,12 +6,11 @@
 }
 .post {
     float: right;
-    background-color: #ffffff;
+    background-color: #ffff;
     position: fixed;
     bottom: 20px;
     right: 10px;  
-    border: 0 solid #ffffff;
+    border: 2 solid #f8b400;
     border-radius: 500px;
-    box-shadow: 4px 1px 1px #cccccc;
-
+    z-index:999; 
 }

@@ -8,7 +8,11 @@ Page({
     calendarHide:true,
     year:0,
     month:0,
-    clickDate: null
+    clickDate: null,
+    dayStyle: [
+      { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' },
+      { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' }
+    ],
   },
   tabSelect(e) {
     console.log(e.currentTarget.dataset.id)
@@ -28,13 +32,25 @@ Page({
     var day = event.detail.day;
     this.setData({
       date: year + "年" + month + "月" + day + "日",
-      clickDate: date
+      clickDate: this.data.date
+    })
+    let clickDay = event.detail.day;
+    let changeDay = `dayStyle[1].day`;
+    let changeBg = `dayStyle[1].background`;
+    this.setData({
+      [changeDay]: clickDay,
+      [changeBg]: "#84e7d0"
     })
   },
   showCalendar(e){
       this.setData({
         calendarHide: !this.data.calendarHide
       }) 
+  },
+  onPostClick(e){
+    wx.navigateTo({
+      url: "/pages/habit/newHabits/newHabits"
+    })
   },
   /**
    * 页面的初始数据

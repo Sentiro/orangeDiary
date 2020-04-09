@@ -2,19 +2,13 @@
 <scroll-view scroll-y class="habitPage">
 <view class="dailyHabits">
 <!--悬浮按钮-->
-<icon type="success" size="50" class="post" bindtap="onPostClick"/>
-<!--日期显示-->
-  <view class="cu-bar bg-white" bindtap="showCalendar">
-    <view class="action sub-title">
-      <text class="text-xl text-bold text-green">{{date}}</text>
-      <text class="bg-green"></text>
-      <!-- last-child选择器-->
-    </view>
-  </view> 
-<!--日历-->
-<view hidden="{{calendarHide}}">
-<calendar calendar-style="calendar" binddayClick="dayClick" />
+<view class="post padding-sm radius shadow shadow-blur bg-yellow" bindtap="onPostClick">
+<iconfont name="list" size="40"/>
 </view>
+
+
+
+
 <!--正在进行的习惯-->
 <!--今日习惯-->
 
@@ -32,6 +26,18 @@
 
 <!--个人-->
 <view wx:if="{{TabCur==='0'}}">
+<!--日期显示-->
+  <view class="cu-bar bg-white" bindtap="showCalendar">
+    <view class="action sub-title">
+      <text class="text-xl text-bold text-grey">{{date}}</text>
+      <text class="bg-grey"></text>
+      <!-- last-child选择器-->
+    </view>
+  </view> 
+<!--日历-->
+<view hidden="{{calendarHide}}">
+<calendar calendar-style="calendar" binddayClick="dayClick" />
+</view>
   <view class="bg-img padding-bottom-xl" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big10007.jpg');height: 207rpx;">
     <view class="bg-shadeTop padding padding-bottom-xl">
       上面开始
