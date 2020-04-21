@@ -1,12 +1,10 @@
 <!--miniprogram/pages/habit/newHabits/newHabits.wxml-->
 <scroll-view scroll-y class="habitPage">
 <!--新建习惯-->
-<view class=" margin-sm bg-gray shadow-blur">
-<view>
+<view class="padding-xl margin-df bg-gray shadow-blur text-center" bindtap="onAddClick">
 <text class="text-lg">新建习惯</text>
 </view>
-
-</view>
+ 
 <!--已有的习惯-->
 <!--健康-->
 <view class="cu-bar bg-white">

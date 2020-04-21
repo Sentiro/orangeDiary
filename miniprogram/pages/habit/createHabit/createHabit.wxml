@@ -1,0 +1,79 @@
+<!--miniprogram/pages/habit/createHabit/createHabit.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">新建习惯</view>
+</cu-custom>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="cu-form-group justify-center">
+    <view class="padding">
+      <view class="cu-avatar xl round">
+        <view class="guide" wx:if="{{change!=''}}">
+          <iconfont name="{{change}}" size="40" />
+        </view>
+        <text class="cuIcon-cameraadd" wx:else="{{change == ''}}"></text>
+      </view>
+    </view>
+  </view>
+  <view class="padding-sm">
+    <view class="cu-avatar round lg  margin-xs" wx:for="{{imgList}}" wx:key>
+      <iconfont name="{{item.id}}" size="40" bindtap="changeBackground" data-name="{{item.id}}" />
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">习惯</view>
+    <input name="habitName" placeholder="New Habit"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">每日打卡次数</view>
+    <input name="times" placeholder="1" bindinput="bindKeyInput" value="{{times}}"></input>
+  </view>
+
+  <view class="cu-form-group margin-top">
+    <view class="title">开始日期选择</view>
+    <picker name="date" mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">时间选择</view>
+    <picker name="time" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="TimeChange">
+      <view class="picker">
+        {{time}}
+      </view>
+    </picker>
+  </view>
+  <!--有问题-->
+  <!--<view class="cu-form-group">
+    <view class="bg-gray" wx:if="{{timeList.length<4}}">
+      <picker name="time" mode="time" value="{{time}}" class="text-xl reminderAdd" start="2015-09-01" end="2020-09-01" bindchange="">
+        当前选择: {{date}}
+      </picker>
+    </view>
+    <view class="time text-center" wx:for="{{timeList}}" wx:key="{{index}}">
+      <text class="cuIcon-roundadd"></text>
+      <text class="time">{{timeList[index]}}</text>
+      <view class="cu-tag bg-red" catchtap="DelTime" data-index="{{index}}">
+        <text class="cuIcon-close"></text>
+      </view>
+    </view>
+  </view>
+  <!----->
+  <view class="cu-form-group">
+    <view class="title">发送通知</view>
+    <switch name="notificationb" class="yellow"></switch>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">位置信息</view>
+    <switch name="geob" class="yellow sm"></switch>
+  </view>
+  <!--submit-->
+  <view class="text-center padding-xl ">
+    <button formType="submit" class="cu-btn bg-yellow round shadow">
+      <text class="text-lg">确定</text>
+    </button>
+  </view>
+
+
+</form>

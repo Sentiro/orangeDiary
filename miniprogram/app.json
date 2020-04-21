@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/habit/habit",
+    "pages/habit/createHabit/createHabit",
+    
     "pages/posts/posts",
     "pages/myInfo/info",
     "pages/index/index",
@@ -28,7 +30,8 @@
     }
   },
   "usingComponents": {
-    "iconfont": "../icon/iconfont/iconfont"
+    "iconfont": "../icon/iconfont/iconfont",
+    "cu-custom": "../colorui/components/cu-custom"
   },
   "window": {
     "backgroundColor": "#F6F6F6",

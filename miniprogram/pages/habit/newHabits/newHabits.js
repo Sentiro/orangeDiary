@@ -140,5 +140,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onAddClick: function(){
+    wx.navigateTo({
+      url: "pages/habit/createHabit/createHabit"
+    })
   }
 })

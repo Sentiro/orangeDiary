@@ -1,8 +1,27 @@
 //app.js
+const app = getApp();
 App({
-  
   onLaunch: function () {
-    
+   wx.getSystemInfo({
+      //success(e) {
+      success: e => { 
+        this.globalData.StatusBar = e.statusBarHeight;
+        let custom = wx.getMenuButtonBoundingClientRect();
+        this.globalData.Custom = custom;
+        this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+      }
+    })
+   /* try {
+      const e = wx.getSystemInfoSync()
+      app.globalData.StatusBar = e.statusBarHeight;
+      let custom = wx.getMenuButtonBoundingClientRect();
+      app.globalData.Custom = custom;
+      app.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+      console.log(app.globalData.StatusBar)
+    } catch (e) {
+      // Do something when catch error
+      console.log(e)
+    }*/
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -13,16 +32,36 @@ App({
         //   如不填则使用默认环境（第一个创建的环境）
         // env: 'my-env-id',
         traceUser: true,
+      });
+      wx.cloud.callFunction({
+        name: 'login',
+        data: {},
+        success: res => {
+          console.log('[云函数] [login] user openid: ', res.result.openid)
+          this.globalData.openid = res.result.openid
+        },
+        fail: err => {
+          console.error('[云函数] [login] 调用失败', err)
+          wx.navigateTo({
+            url: '../deployFunctions/deployFunctions',
+          })
+        }
       })
     }
-
     this.globalData = { 
-      currentDate: new Date()
+      currentDate: new Date(),
+      openid: '',
+      StatusBar: 0,
+      CustomBar:0,
+      Custom:0
     }
-  }
-
-  
-})
+  },
+  globalData: {
+    StatusBar: 0,
+    CustomBar: 0,
+    Custom: 0
+  },
+});
 
 /*
 //获取年份  
