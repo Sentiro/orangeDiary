@@ -13,6 +13,9 @@ Page({
       { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' },
       { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' }
     ],
+    habitList:[
+
+    ]
   },
   tabSelect(e) {
     console.log(e.currentTarget.dataset.id)
@@ -65,6 +68,7 @@ Page({
    /* var timestamp = Date.parse(new Date());
     var date = new Date(timestamp);*/
     // 再通过setData更改Page()里面的data，动态更新页面的数据
+    
     this.setData({
       date: time.getFullYear()+"年"+(time.getMonth()+1)+"月"+time.getDate()+"日",
     });
