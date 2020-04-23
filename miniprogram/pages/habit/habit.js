@@ -1,4 +1,5 @@
 // miniprogram/pages/habit/habit.js
+const app=getApp();
 var util = require('../../utils.js');
 Page({
   data: {
@@ -64,6 +65,22 @@ Page({
    */
   onLoad: function (options) {
     var time=new Date();
+    var appInstance = getApp();
+    var userID = appInstance.globalData.openid;
+    
+    const db = wx.cloud.database();
+    db.collection('habit').where({
+      _openid: userID,
+    }).get({
+      success: (res)=> {
+        console.log(res.data);    
+        this.setData({
+          habitList: res.data
+        });
+        console.log(habitList);
+      }
+    });
+    
     //var time = util.formatTime(new Date());
    /* var timestamp = Date.parse(new Date());
     var date = new Date(timestamp);*/

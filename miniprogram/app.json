@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/habit/habit",
+   "pages/habit/habit",
     "pages/habit/createHabit/createHabit",
     
     "pages/posts/posts",
@@ -48,8 +48,8 @@
       {
         "pagePath": "pages/habit/habit",
         "text": "打卡",
-        "iconPath":"icon/naozhong0.png",
-        "selectedIconPath":"icon/naozhong.png"
+       "iconPath": "icon/naozhong0.png",
+        "selectedIconPath": "icon/naozhong.png"
       },
       {
         "pagePath": "pages/diary/diary",
