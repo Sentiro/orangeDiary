@@ -7,12 +7,26 @@ Page({
   data: {
     userInfo:{}
   },
+ 
+  handleSetUp(e){
+    wx.navigateTo({
+      url: 'setUp/setUp'
+    })
+  },
+ 
+  handleHistory(e){
+    wx.navigateTo({
+      url: 'history/history'
+    })
+  },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
+  onShow(){
+    const userInfo=console.log;
+    this.setData({userInfo})
+  },
+  onLoad() {
+    
   },
 
   /**
@@ -25,39 +39,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onLoad: function () {
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                userInfo: res.userInfo
-              })
-            }
-          })
-        }else{
-          wx.login({
-            success (res) {
-              if (res.code) {
-                //发起网络请求
-                wx.request({
-                  url: 'https://test.com/onLogin',
-                  data: {
-                    code: res.code
-                  }
-                })
-              } else {
-                console.log('登录失败！' + res.errMsg)
-              }
-            }
-          })
-        }
-      }
-    })
-  },
-
+  
   /**
    * 生命周期函数--监听页面隐藏
    */
