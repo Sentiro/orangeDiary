@@ -1,4 +1,4 @@
-// pages/myInfo/history/history.js
+// miniprogram/pages/myInfo/setUp/help/help.js
 Page({
 
   /**
@@ -6,15 +6,6 @@ Page({
    */
   data: {
 
-  },
-
-  handleBack(e){
-    wx.navigateBack({
-      complete: (res) => {},
-      delta: 1,
-      fail: (res) => {},
-      success: (res) => {},
-    })
   },
 
   /**

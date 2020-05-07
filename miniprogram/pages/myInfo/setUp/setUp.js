@@ -7,7 +7,29 @@ Page({
   data: {
 
   },
+goToAbout(e){
+  wx.navigateTo({
+    url: 'about/about'
+  })
+},
 
+goToHelp(e){
+  wx.navigateTo({
+    url: 'help/help'
+  })
+},
+
+goToThanks(e){
+  wx.navigateTo({
+    url: 'thanks/thanks'
+  })
+},
+
+goToFeedback(e){
+  wx.navigateTo({
+    url: 'feedback/feedback'
+  })
+},
   /**
    * 生命周期函数--监听页面加载
    */
