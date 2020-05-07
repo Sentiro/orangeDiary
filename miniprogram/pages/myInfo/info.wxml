@@ -11,8 +11,6 @@
   <view class="flex justify-end margin-lg">
     <text class="cu-avatar round margin-center xl" style="background-image: url({{avatarUrl}})"></text>
   </view>
-
-
 </view>
 
 <view class="padding bg-white margin-top card-menu cu-list menu">
