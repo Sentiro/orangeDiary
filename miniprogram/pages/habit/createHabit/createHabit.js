@@ -13,7 +13,7 @@ Page({
     time: '12:01',
     date: '2018-12-25',
     times: 1,
-    imgList:[
+    imgList: [
       {
         index: 0,
         name: "吃药",
@@ -28,11 +28,11 @@ Page({
         id: "yaoping"
       }, {
         index: 3,
-        name: "吃药",
+        name: "游戏",
         id: "youxi"
       }, {
         index: 4,
-        name: "吃药",
+        name: "游戏",
         id: "youxi1"
       }, {
         index: 5,
@@ -116,8 +116,60 @@ Page({
         id: "coffee-break"
       }, {
         index: 25,
-        name: "休息",
+        name: "告白",
         id: "qiqiu"
+      }, {
+        index: 26,
+        name: "日历",
+        id: "rili"
+      }, {
+        index: 27,
+        name: "笔记",
+        id: "biji"
+      }, {
+        index: 28,
+        name: "西瓜",
+        id: "watermelon"
+      }, {
+        index: 29,
+        name: "电脑",
+        id: "diannao"
+      }, {
+        index: 30,
+        name: "钢琴",
+        id: "gangqin"
+      }, {
+        index: 31,
+        name: "电脑",
+        id: "diannao1"
+      }, {
+        index: 32,
+        name: "书",
+        id: "shu"
+      }, {
+        index: 33,
+        name: "坚实臂膀",
+        id: "HandMuscle"
+      }, {
+        index: 34,
+        name: "摄影",
+        id: "photography"
+      }, {
+        index: 35,
+        name: "好好吃早餐",
+        id: "BigBreakfast"
+      }, {
+        index: 36,
+        name: "瑜伽",
+        id: "Yoga-guru"
+      }, {
+        index: 37,
+        name: "书",
+        id: "books"
+      }, {
+        index: 38,
+        name: "Keep",
+        id: "keep-"
       },
     ]
   }, 
