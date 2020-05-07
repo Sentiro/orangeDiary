@@ -1,11 +1,13 @@
 // pages/myInfo/info.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo:{}
+    userInfo:{},
+    avatarUrl: './user-unlogin.png'//有问题
   },
  
   handleSetUp(e){
