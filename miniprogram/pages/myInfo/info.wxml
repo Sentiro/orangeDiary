@@ -1,5 +1,59 @@
 <!--pages/myInfo/info.wxml-->
-<view class="user_info_wrap" hover-stop-propagation="false">
+
+<view class="padding">
+<view class="padding-xl radius shadow bg-orange light margin-top text-center"  style="height:30vh">      
+  <text class="cu-avatar round margin-center"  style="width:4rem;height:14vh;"></text>
+  <view class="text-gray light">\n\n\n昵称</view>
+  </view>
+</view>
+
+<view class="padding solid{{size?'xl':''}}">
+  <text class="cuIcon-like text-orange light">平均情绪值</text>
+  <view class="flex margin-top">
+  <view class="cu-progress round" style="height:5vh">
+      <view class="bg-orange light" style="width:5rem;"></view>
+    </view>
+  </view>
+</view>
+
+<view class="padding radius shadow bg-gray light margin-top view-center" style="height:25vh;">
+  <text class="text-orange light">更多功能</text>
+  <view class="text-center">
+  <image src="qingxuceshi.png" style="width:100rpx;height:100rpx" bindtouchend="">   </image>
+  <text class="padding" style="width:6rem"></text>
+  <image src="pipei.png" style="width:95rpx;height:95rpx">   </image>
+  <text class="padding" style="width:6rem"></text>
+  <image src="qingxuguanli.png" style="width:110rpx;height:110rpx">   </image>
+  <text class="padding" style="width:6rem"></text>
+  <image src="shoucang.png" style="width:100rpx;height:100rpx"></image>
+  </view>
+  <text space="nbsp">\n        性格测试           匹配           情绪管理          我的收藏</text>
+</view>
+
+  <view class="cu-bar bg-white">
+  <text class="text-l text-olive" space="nbsp">    历史记录</text>
+    <view class="text-right">    
+      <text class="cuIcon-right text-gray" bindtouchend="handleHistory"></text>
+       </view>
+  </view>
+
+  <view class="cu-bar bg-white">
+  <text class="text-l text-olive" space="nbsp">    设置</text>
+    <view class="text-right">
+      <text class="cuIcon-right text-gray" bindtouchend="handleSetUp"></text>
+    </view>
+  </view>
+
+<view class="text-center padding-xl ">
+    <button formType="submit" class="cu-btn bg-orange light round">
+      <text class="text-lg">登出</text>
+    </button>
+  </view>
+
+
+
+
+<!-- <view class="user_info_wrap" hover-stop-propagation="false">
     <view class="user_img_wrap" hover-class="none" hover-stop-propagation="false">
         <image class="user_bg" src="{{userInfo.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">       
         </image>
@@ -9,4 +63,4 @@
         <view class="user_name"></view>  
         </view>
     </view>
-</view>
+</view> -->
