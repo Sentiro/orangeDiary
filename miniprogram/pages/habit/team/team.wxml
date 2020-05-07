@@ -1,2 +1,50 @@
 <!--miniprogram/pages/habit/team/team.wxml-->
-<text>miniprogram/pages/habit/team/team.wxml</text>
+<scroll-view scroll-y class="team">
+  <view class=" padding align-center bg-white">
+    <view class="padding-sm margin-xs radius ">
+      <view class="cu-avatar round xl" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
+    </view>
+    <view class="radius">
+      <view class="action border-title cu-list menu ">
+        <view class="cu-item">
+          <text class=" text-xl text-bold">{{teamName}}</text>
+          <view class="action">
+            <view class="cu-tag round bg-{{tagColor}} light">{{tagValue}}</view>
+          </view>
+          <!-- 底部样式 last-child选择器-->
+        </view>
+      </view>
+      <view class="text-grey">
+        <text class="text-cut padding">ID:{{teamID}}</text>
+      </view>
+      <view class="text-content margin-left-xs padding-left-sm">
+        <text class="text-grey">
+                    {{teamDetail}}
+									</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-list menu-avatar padding">
+    <view class="cu-item margin-top" wx:for="{{teamMember}}" wx:key>
+      <view class="cu-avatar round lg" style="background-image:url({{item.img}});"></view>
+      <view class="content">
+        <view class="text-grey">{{item.name}}</view>
+      </view>
+      <view class="text-sm flex">
+        <iconfont name="juzi1" wx:for="{{item.completeNum}}"></iconfont>
+        <iconfont name="juzi1" color="#ededed " wx:for="{{item.habitNum-item.completeNum}}"></iconfont>
+      </view>
+
+      <view class="action">
+        <view class="cu-bar bg-white">
+          <view class="action border-title">
+            <text class="text-xl text-bold text-yellow">{{index}}</text>
+            <text class="bg-yellow" style="width:2rem"></text>
+            <!-- 底部样式 last-child选择器-->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

@@ -2,15 +2,7 @@
 const app = getApp();
 App({
   onLaunch: function () {
-   wx.getSystemInfo({
-      //success(e) {
-      success: e => { 
-        this.globalData.StatusBar = e.statusBarHeight;
-        let custom = wx.getMenuButtonBoundingClientRect();
-        this.globalData.Custom = custom;
-        this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-      }
-    })
+    
    /* try {
       const e = wx.getSystemInfoSync()
       app.globalData.StatusBar = e.statusBarHeight;
@@ -47,13 +39,26 @@ App({
           })
         }
       })
+      wx.getSystemInfo({
+        success: e => {
+          this.globalData.StatusBar = e.statusBarHeight;
+          let capsule = wx.getMenuButtonBoundingClientRect();
+          if (capsule) {
+            this.globalData.Custom = capsule;
+            this.globalData.CustomBar = capsule.bottom + capsule.top - e.statusBarHeight;
+          } else {
+            this.globalData.CustomBar = e.statusBarHeight + 50;
+          }
+        }
+      })
     }
+    
     this.globalData = { 
       currentDate: new Date(),
       openid: '',
-      StatusBar: 0,
-      CustomBar:0,
-      Custom:0
+     // StatusBar: 0,
+      //CustomBar:0,
+      //Custom:0
     }
   },
   globalData: {

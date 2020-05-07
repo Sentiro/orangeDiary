@@ -4,13 +4,49 @@
     padding-top: 10px;       /*上内边距为 10px*/
     border-radius: 15px;     /*添加边框圆角*/
 }
+
 .post {
     float: right;
     background-color: #ffff;
     position: fixed;
     bottom: 20px;
     right: 20px;  
-    border: 2 solid #f8b400;
+    border: 2 solid #f8b600;
     border-radius: 500px;
     z-index:999; 
+}
+.cardTitle{
+  color: rgb(139, 138, 138);
+  padding: 90rpx 60rpx;
+  font-size: 40rpx;
+  font-weight: 300;
+  transform: skew(-10deg, 0deg);
+  position: relative;
+  text-shadow: 0px 0px 6rpx rgba(0,0,0,0.3)
+}
+
+.cardTitle::before{
+  content: "";
+  position: absolute;
+  width: 60rpx;
+  height: 6rpx;
+  border-radius: 20rpx;
+  background-color: rgb(185, 181, 181);
+  display: block;
+  top: 60rpx;
+  left: 50rpx;  
+  transform: skew(10deg, 0deg);
+}
+.cardTitle::after{
+  content: "";
+  position: absolute;
+  width: 140rpx;
+  border-radius: 6rpx;
+  height: 24rpx;
+  background-color: rgb(209, 207, 207);
+  display: block;
+  bottom: 76rpx;
+  left: 90rpx;  
+  transform: skew(10deg, 0deg);
+  opacity: 0.1;
 }

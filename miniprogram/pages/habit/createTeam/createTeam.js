@@ -1,31 +1,11 @@
-// miniprogram/pages/habit/team/team.js
+// miniprogram/pages/habit/createTeam/createTeam.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    teamName:'单词打卡小分队',
-    tagColor:'yellow',
-    tagValue:'音乐',
-    teamID:'123488',
-    teamDetail: '塔里克是保护者星灵，用超乎寻常的力量守护着符文之地的生命',
-    teamMember:[
-      {
-        openID:null,
-        name:"金针小肥猪",
-        habitNum: 5,
-        completeNum: 4,
-        img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-        
-      },{
-        openID: null,
-        name: "金针小肥猪",
-        habitNum: 5,
-        completeNum: 4,
-        img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-      }
-    ]
+
   },
 
   /**

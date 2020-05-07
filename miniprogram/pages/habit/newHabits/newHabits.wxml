@@ -1,42 +1,46 @@
 <!--miniprogram/pages/habit/newHabits/newHabits.wxml-->
 <scroll-view scroll-y class="habitPage">
-<!--新建习惯-->
-<view class="padding-xl margin-df bg-gray shadow-blur text-center" bindtap="onAddClick">
-<text class="text-lg">新建习惯</text>
-</view>
- 
-<!--已有的习惯-->
-<!--健康-->
-<view class="cu-bar bg-white">
+  <!--新建习惯-->
+  <view class="cu-list padding-lg">
+    <view class="padding-sm  bg-gray shadow-blur text-center" bindtap="onAddClick">
+      <view class="cu-item text-sl">
+       <text class="cuIcon-roundadd lg text-gray"></text>
+      </view>     
+      <text >新建习惯</text>
+    </view>
+  </view>
+  <!--已有的习惯-->
+  <!--健康-->
+  <view class="cu-bar bg-white">
     <view class="action title-style-3">
       <text class="text-xl text-bold">健康</text>
       <text class="text-Abc text-gray self-end margin-left-sm">Healthy</text>
     </view>
-</view>
-<view class="grid col-3 margin-sm">
-  <view class="padding-sm" wx:for="{{colorList}}" wx:key>
-    <view class="bg-gray padding radius text-center shadow-blur">
-      <view class="text-lg">{{item.title}}</view>
-      <view class="margin-top-sm text-Abc">{{item.name}}</view>
+  </view>
+  <view class="grid col-3 margin-sm">
+    <view class="padding-sm" wx:for="{{healthList}}" wx:key bindtap="onAddClick">
+      <view class="bg-gray padding radius text-center shadow-blur">
+        <iconfont name="{{item.id}}"></iconfont>
+        <view class="text-lg">{{item.name}}</view>
+      </view>
     </view>
   </view>
-</view>
-<view class="cu-item" wx:for="{{icon}}" wx:key wx:if="{{item.isShow}}">
+  <view class="cu-item" wx:for="{{icon}}" wx:key wx:if="{{item.isShow}}">
     <text class="cuIcon-{{item.name}} lg text-gray"></text>
     <text>{{item.name}}</text>
-</view>
-<!--日常-->
-<view class="cu-bar bg-white">
+  </view>
+  <!--日常-->
+  <view class="cu-bar bg-white">
     <view class="action title-style-3">
       <text class="text-xl text-bold">日常</text>
       <text class="text-Abc text-gray self-end margin-left-sm">Daily</text>
     </view>
-</view>
-<!--学习-->
-<view class="cu-bar bg-white">
+  </view>
+  <!--学习-->
+  <view class="cu-bar bg-white">
     <view class="action title-style-3">
       <text class="text-xl text-bold">学习</text>
       <text class="text-Abc text-gray self-end margin-left-sm">Study</text>
     </view>
-</view>
+  </view>
 </scroll-view>

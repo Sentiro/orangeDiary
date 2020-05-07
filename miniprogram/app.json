@@ -1,8 +1,8 @@
 {
   "pages": [
-   "pages/habit/habit",
+    "pages/habit/habit",
     "pages/habit/createHabit/createHabit",
-    
+    "pages/habit/newHabits/newHabits",
     "pages/posts/posts",
     "pages/myInfo/info",
     "pages/index/index",
@@ -21,7 +21,7 @@
     "pages/diary/diary",
     "pages/habit/myHabits/myHabits",
     "pages/habit/team/team",
-    "pages/habit/newHabits/newHabits"
+    "pages/habit/createTeam/createTeam"
   ],
   "plugins": {
     "calendar": {
@@ -43,31 +43,31 @@
   "sitemapLocation": "sitemap.json",
   "style": "v2",
   "tabBar": {
-    "selectedColor":"#2c2c2c",
+    "selectedColor": "#2c2c2c",
     "list": [
       {
         "pagePath": "pages/habit/habit",
         "text": "打卡",
-       "iconPath": "icon/naozhong0.png",
+        "iconPath": "icon/naozhong0.png",
         "selectedIconPath": "icon/naozhong.png"
       },
       {
         "pagePath": "pages/diary/diary",
         "text": "日记",
-        "iconPath":"icon/ziliao0.png",
-        "selectedIconPath":"icon/ziliao.png"
+        "iconPath": "icon/ziliao0.png",
+        "selectedIconPath": "icon/ziliao.png"
       },
       {
         "pagePath": "pages/posts/posts",
         "text": "广场",
-        "iconPath":"icon/fenxiang0.png",
-        "selectedIconPath":"icon/fenxiang.png"
+        "iconPath": "icon/fenxiang0.png",
+        "selectedIconPath": "icon/fenxiang.png"
       },
       {
         "pagePath": "pages/myInfo/info",
         "text": "个人信息",
-        "iconPath":"icon/wode0.png",
-        "selectedIconPath":"icon/wode.png"
+        "iconPath": "icon/wode0.png",
+        "selectedIconPath": "icon/wode.png"
       }
     ]
   }

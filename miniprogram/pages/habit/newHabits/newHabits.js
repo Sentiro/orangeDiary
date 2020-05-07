@@ -144,7 +144,7 @@ Page({
 
   onAddClick: function(){
     wx.navigateTo({
-      url: "pages/habit/createHabit/createHabit"
+      url: "../createHabit/createHabit"
     })
   }
 })

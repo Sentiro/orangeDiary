@@ -1,22 +1,45 @@
 // miniprogram/pages/habit/habit.js
-const app=getApp();
+const app = getApp();
 var util = require('../../utils.js');
 Page({
   data: {
+    CustomBar: null,
+    leader: true,
+    hasTeam: true,
     TabCur: '0',
     scrollLeft: 0,
     date: null,
-    calendarHide:true,
-    year:0,
-    month:0,
+    calendarHide: true,
+    year: 0,
+    month: 0,
     clickDate: null,
-    dayStyle: [
-      { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' },
-      { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' }
+    dayStyle: [{
+        month: 'current',
+        day: new Date().getDate(),
+        color: 'white',
+      background: '#f8b600'
+      }
     ],
-    habitList:[
+    habitList: [],
+    teamName: '单词打卡小分队',
+    tagColor: 'yellow',
+    tagValue: '音乐',
+    teamID: '123488',
+    teamDetail: '塔里克是保护者星灵，用超乎寻常的力量守护着符文之地的生命',
+    teamMember: [{
+      openID: null,
+      name: "金针小肥猪",
+      habitNum: 5,
+      completeNum: 4,
+      img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
 
-    ]
+    }, {
+      openID: null,
+      name: "金针小肥猪",
+      habitNum: 5,
+      completeNum: 4,
+      img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
+    }]
   },
   tabSelect(e) {
     console.log(e.currentTarget.dataset.id)
@@ -30,28 +53,36 @@ Page({
       url: url,
     })*/
   },
-  dayClick: function (event) {
-    var year=event.detail.year;
+  dayClick: function(event) {
+    var days_style = new Array;
+    var year = event.detail.year;
     var month = event.detail.month;
     var day = event.detail.day;
     this.setData({
       date: year + "年" + month + "月" + day + "日",
       clickDate: this.data.date
     })
-    let clickDay = event.detail.day;
-    let changeDay = `dayStyle[1].day`;
-    let changeBg = `dayStyle[1].background`;
+    days_style.push({
+      month: 'current',
+      day: new Date().getDate(),
+      color: 'white',
+      background: '#f8b600'
+    }, {
+      month: 'current',
+      day: day,
+      color: 'white',
+        background: '#f8b6005b'
+    }, )
     this.setData({
-      [changeDay]: clickDay,
-      [changeBg]: "#84e7d0"
+      dayStyle: days_style
     })
   },
-  showCalendar(e){
-      this.setData({
-        calendarHide: !this.data.calendarHide
-      }) 
+  showCalendar(e) {
+    this.setData({
+      calendarHide: !this.data.calendarHide
+    })
   },
-  onPostClick(e){
+  onPostClick(e) {
     wx.navigateTo({
       url: "/pages/habit/newHabits/newHabits"
     })
@@ -63,80 +94,97 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var time=new Date();
+  onLoad: function(options) {
+    var time = new Date();
     var appInstance = getApp();
     var userID = appInstance.globalData.openid;
-    
+
     const db = wx.cloud.database();
     db.collection('habit').where({
       _openid: userID,
     }).get({
-      success: (res)=> {
-        console.log(res.data);    
+      success: (res) => {
+        console.log(res.data);
         this.setData({
           habitList: res.data
         });
         console.log(habitList);
       }
     });
-    
+
     //var time = util.formatTime(new Date());
-   /* var timestamp = Date.parse(new Date());
-    var date = new Date(timestamp);*/
+    /* var timestamp = Date.parse(new Date());
+     var date = new Date(timestamp);*/
     // 再通过setData更改Page()里面的data，动态更新页面的数据
-    
+
     this.setData({
-      date: time.getFullYear()+"年"+(time.getMonth()+1)+"月"+time.getDate()+"日",
+      date: time.getFullYear() + "年" + (time.getMonth() + 1) + "月" + time.getDate() + "日",
     });
+
+    wx.getSystemInfo({
+      success: e => {
+        //this.globalData.StatusBar = e.statusBarHeight;
+        let capsule = wx.getMenuButtonBoundingClientRect();
+        if (capsule) {
+          //this.globalData.Custom = capsule;
+          this.setData({
+            CustomBar: capsule.bottom + capsule.top - e.statusBarHeight
+          });
+        } else {
+          this.setData({
+            CustomBar: e.statusBarHeight + 50
+          });
+        }
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

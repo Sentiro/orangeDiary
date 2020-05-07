@@ -9,14 +9,17 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     change:'',
+    index: null,
+    picker: ['每天', '每周', '每月','每年'],
     timeList: [],
     time: '12:01',
     date: '2018-12-25',
     times: 1,
+    modalName: '',
     imgList: [
       {
         index: 0,
-        name: "吃药",
+        name: "按时吃药",
         id: "yao"
       }, {
         index: 1,
@@ -285,6 +288,12 @@ Page({
       }
     })
   },
+  PickerChange(e) {
+    console.log(e);
+    this.setData({
+      index: e.detail.value
+    })
+  },
   TimeChange(e) {
     this.setData({
       time: e.detail.value
@@ -307,7 +316,9 @@ Page({
     })
   },
   formSubmit: function(e) {
-
+    this.setData({
+      modalName: 'Image'
+    })
     //console.log('form发生了submit事件，携带数据为：', e.detail.value)
     const db = wx.cloud.database();
     /*var openid = getApp().globalData.openid;
@@ -335,10 +346,20 @@ Page({
          done: false
        },
        success: function (res) {
+        
          // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-         console.log(res)
+        
        }
      })
+  },
+
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    });
+    wx.navigateTo({
+      url: "../habit"
+    })
   },
   formReset: function() {
     console.log('form发生了reset事件')
