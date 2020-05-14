@@ -15,4 +15,117 @@ position: relative;
 display: block;
 z-index: 0;
 }
+.timeline {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  padding: 0 62px;
+  margin: 0;
+  list-style: none;
+}
+.timeline::before {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  padding-right: 11px;
+  border-right: 2px solid #F2F2F2;
+  content: "";
+}
+.timeline__item {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+  padding: 62px 0;
+}
+.timeline__step {
+  padding-right: 62px;
+}
+.timeline__step__marker {
+  position: relative;
+  display: table-cell;
+  height: 24px;
+  min-height: 24px;
+  width: 24px;
+  min-width: 24px;
+  border: 4px solid #F2F2F2;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 0;
+}
+.timeline__step__marker--red {
+  border-color: #FF3467;
+}
+.timeline__step__marker--blue {
+  border-color: #18D0BF;
+}
+.timeline__step__marker--salmon {
+  border-color: #F48A6D;
+}
+.timeline__step__marker--purple {
+  border-color: #C178FA;
+}
+.timeline__time {
+  padding-right: px;
+  font-size: 26px;
+}
+.timeline__title {
+  padding-bottom: 26px;
+  font-size: 32px;
+}
+.timeline__points {
+  padding: 0;
+  list-style: none;
+  font-size: 24px;
+  color: #77777D;
+}
+.timeline__points {
+  padding: 0 0 12px 0;
+}
+
+/* For mobile!
+ */
+@media (max-width: 768px) {
+  .card {
+    max-width: 375;
+  }
+
+  .timeline {
+    padding: 0 35.42857px;
+  }
+  .timeline::before {
+    padding-right: 6.28571px;
+  }
+  .timeline__item {
+    padding: 35.42857px 0;
+  }
+  .timeline__step {
+    padding-right: 35.42857px;
+  }
+  .timeline__step__marker {
+    height: 13.71429px;
+    min-hieght: 13.71429px;
+    width: 13.71429px;
+    min-width: 13.71429px;
+    border-width: 2.28571px;
+  }
+  .timeline__time {
+    padding-right: 72px;
+    font-size: 14.85714px;
+  }
+  .timeline__title {
+    padding-bottom: 14.85714px;
+    font-size: 18.28571px;
+  }
+  .timeline__points {
+    font-size: 13.71429px;
+  }
+  .timeline__points{
+    padding-bottom: 6.85714px;
+  }
+}
+
 

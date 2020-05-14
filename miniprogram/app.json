@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/myInfo/info",
+    "pages/habit/modifyTeam/modifyTeam",
     "pages/habit/habit",
     "pages/habit/createHabit/createHabit",
     "pages/myInfo/setUp/setUp",
@@ -25,7 +26,9 @@
     "pages/myInfo/setUp/help/help",
     "pages/myInfo/setUp/thanks/thanks",
     "pages/myInfo/setUp/about/about",
-    "pages/myInfo/setUp/feedback/feedback"
+    "pages/myInfo/setUp/feedback/feedback",
+    "pages/habit/members/members",
+    "pages/habit/modifyTeam/editTag"
   ],
   "plugins": {
     "calendar": {

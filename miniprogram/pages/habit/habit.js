@@ -87,6 +87,11 @@ Page({
       url: "/pages/habit/newHabits/newHabits"
     })
   },
+  turnToTeamSetting(){
+    wx.navigateTo({
+      url: "/pages/habit/modifyTeam/modifyTeam"
+    })
+  },
   /**
    * 页面的初始数据
    */
@@ -98,7 +103,7 @@ Page({
     var time = new Date();
     var appInstance = getApp();
     var userID = appInstance.globalData.openid;
-
+    
     const db = wx.cloud.database();
     db.collection('habit').where({
       _openid: userID,
@@ -107,6 +112,17 @@ Page({
         console.log(res.data);
         this.setData({
           habitList: res.data
+        });
+        console.log(habitList);
+      }
+    });
+    db.collection('test').where({
+      teamID: userID,
+    }).get({
+      success: (res) => {
+        console.log(res.data);
+        this.setData({
+         // habitList: res.data
         });
         console.log(habitList);
       }
@@ -120,23 +136,6 @@ Page({
     this.setData({
       date: time.getFullYear() + "年" + (time.getMonth() + 1) + "月" + time.getDate() + "日",
     });
-
-    wx.getSystemInfo({
-      success: e => {
-        //this.globalData.StatusBar = e.statusBarHeight;
-        let capsule = wx.getMenuButtonBoundingClientRect();
-        if (capsule) {
-          //this.globalData.Custom = capsule;
-          this.setData({
-            CustomBar: capsule.bottom + capsule.top - e.statusBarHeight
-          });
-        } else {
-          this.setData({
-            CustomBar: e.statusBarHeight + 50
-          });
-        }
-      }
-    })
   },
 
   /**

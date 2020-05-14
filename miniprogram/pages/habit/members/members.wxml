@@ -1,0 +1,10 @@
+<!--miniprogram/pages/habit/members/members.wxml-->
+<view class="cu-list menu-avatar no-padding">
+  <view class="cu-item solid-bottom" wx:for="{{3}}" >
+    <view class="cu-avatar round lg">{{item.name}}A</view>
+    <view class="content">
+      <view class="text-grey">{{item.kk}}AA
+        <text class="text-abc">{{item.name}}A</text>君</view>
+    </view>
+  </view>
+</view>

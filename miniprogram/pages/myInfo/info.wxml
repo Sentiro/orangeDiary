@@ -16,7 +16,7 @@
 <view class="padding bg-white margin-top card-menu cu-list menu">
   <text class="cuIcon-like"></text>平均情绪值
   <view class="flex margin-top">
-    <view class="cu-progress round bg-yellow light" style="height:7vh">
+    <view class="cu-progress round bg-yellow light" style="height:2rem">
       <view class="bg-yellow" style="width:5rem;"></view>
       <!--宽度要算一下-->
     </view>
@@ -63,7 +63,25 @@
     <view class="cu-item arrow" bindtouchend="handleSetUp">
       <view class="content">
         <image src="/images/logo.png" class="png" mode="aspectFit"></image>
-        <text class="text-grey">设置</text>
+        <text class="text-grey">通知</text>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtouchend="handleSetUp">
+      <view class="content">
+        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">鸣谢</text>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtouchend="handleSetUp">
+      <view class="content">
+        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">反馈</text>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtouchend="handleSetUp">
+      <view class="content">
+        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">关于</text>
       </view>
     </view>
   </view>

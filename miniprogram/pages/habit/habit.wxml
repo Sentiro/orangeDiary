@@ -137,8 +137,8 @@
           </view>
         </view>
         <view class="text-center padding-xl">
-          <button wx:if="{{leader}}" formType="submit" class="cu-btn bg-yellow round shadow">
-            <text class="text-lg">解散</text>
+          <button wx:if="{{leader}}" bindtap="turnToTeamSetting" class="cu-btn bg-yellow round shadow">
+            <text class="text-lg">设置</text>
           </button>
         </view>
       </scroll-view>

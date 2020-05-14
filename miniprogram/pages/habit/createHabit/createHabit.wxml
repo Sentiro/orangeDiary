@@ -42,13 +42,13 @@
     </picker>
   </view>
   <view class="cu-form-group ">
-		<view class="title">重复方式</view>
-		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
-			<view class="picker">
-				每天
-			</view>
-		</picker>
-	</view>
+    <view class="title">重复方式</view>
+    <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+      <view class="picker">
+        每天
+      </view>
+    </picker>
+  </view>
   <!--有问题-->
   <!--<view class="cu-form-group">
     <view class="bg-gray" wx:if="{{timeList.length<4}}">
@@ -75,24 +75,9 @@
   </view>
   <!--submit-->
   <view class="text-center padding-xl ">
-    <button formType="submit" class="cu-btn bg-yellow round shadow" data-target="Image">
+    <button formType="submit" class="cu-btn bg-yellow round shadow" >
       <text class="text-lg">确定</text>
     </button>
   </view>
-  <view class="cu-modal {{modalName=='Image'?'show':''}}">
-  <view class="cu-dialog">
-    <view class="bg-img" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big91012.jpg');height:200px;">
-      <view class="cu-bar justify-end text-white">
-        <view class="action" bindtap="hideModal">
-          <text class="cuIcon-close "></text>
-        </view>
-      </view>
-    </view>
-    <view class="cu-bar bg-white">
-      <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal">我知道了</view>
-    </view>
-  </view>
-</view>
-
-
+  
 </form>

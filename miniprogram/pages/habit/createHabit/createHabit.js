@@ -346,9 +346,12 @@ Page({
          done: false
        },
        success: function (res) {
-        
-         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-        
+         wx.showToast({
+           title: '成功',
+           icon: 'success',
+           duration: 2000
+         })
+         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id        
        }
      })
   },

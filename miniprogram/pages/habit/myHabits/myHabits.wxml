@@ -2,17 +2,17 @@
 <template name="myHabits">
   <!--已完成的个人习惯时间轴-->
   <view class="cu-timeline">
-    <view class="cu-item text-yellow cuIcon-attentionforbidfill" wx:for="{{habitList}}">
+    <view class="cu-item text-yellow cuIcon-attentionforbidfill bg-grey" wx:for="{{habitList}}">
       <view class="cu-list menu-avatar">
         <view class="cu-item ">
           <view class="cu-avatar round lg">
-          <iconfont name="{{item.img}}" size="40" />
+            <iconfont name="{{item.img}}" size="40" />
           </view>
           <view class="content">
             <view class="text-grey">{{item.name}}</view>
             <view class="text-gray text-sm flex">
               <text class="text-cut">
-							<text class=" margin-right-xs">{{item.detail}}</text> 
+							<text class=" margin-right-xs">{{item.detail}}</text>
               </text>
             </view>
           </view>
@@ -24,3 +24,23 @@
     </view>
   </view>
 </template>
+
+<view class="timeline">
+  <view class="timeline__item">
+    <view class="timeline__step">
+      <view class="timeline__step__marker timeline__step__marker--red">
+      </view>
+    </view>
+    <view class="timeline__time">
+      5pm
+    </view>
+    <view class="timeline__content">
+      <view class="timeline__title">
+        New Icons
+      </view>
+      <view class="timeline__points">
+        <view>Mobile App</view>
+      </view>
+    </view>
+  </view>
+</view>
