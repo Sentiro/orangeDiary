@@ -1,0 +1,43 @@
+<!--miniprogram/pages/habit/newHabits/newHabits.wxml-->
+
+<!--轮播图-->
+<view class="page-section page-section-spacing swiper">
+  <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{background}}" wx:key="*this">
+      <swiper-item>
+        <view class="swiper-item {{item}}"></view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+
+<view class="cu-bar bg-white" bindtap="showCalendar">
+  <view class="action sub-title">
+    <text class="text-xl text-bold text-grey">2020年5月3日</text>
+    <text class="bg-grey"></text>
+    <!-- last-child选择器-->
+  </view>
+</view>
+<view hidden="{{calendarHide}}">
+<calendar calendar-style="calendar"/>
+</view>
+
+<view class="question-input-area">
+  <!-- 问题标题区域  -->
+  <view class="question-title-wrap">
+    <!-- 标题输入框 -->
+    <view>第一天使用橘子真甜</view>
+  </view>
+
+  <!-- 问题正文区域  -->
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <!-- 多行输入框 -->
+        <text>今天我第一次使用了橘子真甜这个小程序，我觉得他的界面很可爱，也很实用，我要给开发者打钱</text>
+      </view>
+    </view>
+  </view>
+</view>

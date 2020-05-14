@@ -1,0 +1,66 @@
+<!--miniprogram/pages/habit/newHabits/newHabits.wxml-->
+
+<view class="weui-uploader">
+  <view class="img-v weui-uploader__bd"  style="flex-direction:row">
+    <view class='pic' wx:for="{{imgs}}" wx:for-item="item" wx:key="*this" >
+        <image style="width: 100px; height: 100px; background-color: #eeeeee;"
+                class='weui-uploader__img ' 
+                src="{{item}}" 
+                data-index="{{index}}" mode="aspectFill" bindtap="previewImg">
+                <view class="delet" bindtap="deleteImg">
+                   <text class="iconfont icon-shanchu" style='color:#7F8389; font-size:230rpx;'/>
+                </view>
+        </image>
+    </view>
+      <!-- 用来提示用户上传图片 -->
+      <view class="weui-uploader__input-box pic" bindtap="chooseImg"> </view>
+  </view>
+  <view class="add" bindtap="chooseImg">
+    <text class="iconfont icon-tianjiatupian" style='color:#7F8389; font-size:230rpx;'/>
+  </view>
+</view>
+
+
+
+<view class="page-section page-section-spacing swiper">
+  <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{background}}" wx:key="*this">
+      <swiper-item>
+        <view class="swiper-item {{item}}"></view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+
+<view class="cu-bar bg-white" bindtap="showCalendar">
+  <view class="action sub-title">
+    <text class="text-xl text-bold text-grey">2020年5月3日</text>
+    <text class="bg-grey"></text>
+    <!-- last-child选择器-->
+  </view>
+</view>
+<view hidden="{{calendarHide}}">
+<calendar calendar-style="calendar"/>
+</view>
+
+<view class="question-input-area">
+  <!-- 问题标题区域  -->
+  <view class="question-title-wrap">
+    <!-- 标题输入框 -->
+    <input class="question-title" placeholder=" 标题"  placeholder-style="color:#b3b3b3;font-size:20px;" bindinput="handleTitleInput" maxlength="-1" ></input>
+  </view>
+
+  <!-- 问题正文区域  -->
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <!-- 多行输入框 -->
+        <textarea class="weui-textarea" placeholder="     请输入正文"  placeholder-style="color:#b3b3b3;font-size:14px;" style="height: 12rem" bindinput="handleContentInput" maxlength="-1" />
+      </view>
+    </view>
+  </view>
+</view>
+
+<button class="preserve-diary" bindtap="preserveDiary">保存</button>
