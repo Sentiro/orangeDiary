@@ -1,19 +1,9 @@
 //app.js
 const app = getApp();
+
 App({
-  onLaunch: function () {
-    
-   /* try {
-      const e = wx.getSystemInfoSync()
-      app.globalData.StatusBar = e.statusBarHeight;
-      let custom = wx.getMenuButtonBoundingClientRect();
-      app.globalData.Custom = custom;
-      app.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-      console.log(app.globalData.StatusBar)
-    } catch (e) {
-      // Do something when catch error
-      console.log(e)
-    }*/
+  onLaunch: function() {
+   
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -67,8 +57,8 @@ App({
         }
       })
     }
-    
-    this.globalData = { 
+
+    this.globalData = {
       currentDate: new Date(),
       openid: '',
       avatarUrl: './user-unlogin.png',
@@ -76,7 +66,7 @@ App({
       logged: false,
       takeSession: false,
       requestResult: ''
-     // StatusBar: 0,
+      // StatusBar: 0,
       //CustomBar:0,
       //Custom:0
     }

@@ -1,6 +1,6 @@
 // miniprogram/pages/habit/newHabits/newHabits.js
-
-
+var util = require('../../../utils.js');
+var plugin = requirePlugin("chatbot");
 Page({
   /**
    * 页面的初始数据
@@ -21,9 +21,6 @@ Page({
     title: "",
     text: ""
   },
-  onLoad(options) {
-    $init(this)
-  },
 
   showCalendar: function (event) {
     var year = event.detail.year;
@@ -38,9 +35,6 @@ Page({
     }) 
   },
 
-  onLoad(options) {
-    $init(this)
-  },
 
   // 上传图片
   chooseImg: function (e) {
@@ -140,13 +134,31 @@ Page({
       }
     })
   },
-
+  submit(){
+   
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var time = new Date();
+    this.setData({
+      date: time.getFullYear() + "年" + (time.getMonth() + 1) + "月" + time.getDate() + "日",
+    });
+    plugin.init({
+      appid: "wx7e1ea8c032211c74", //小程序示例账户，仅供学习和参考
+      openid: "oOjE85GnO1eb1FXvBb9QrhFdhIsU", //用户的openid，非必填，建议传递该参数
+      success: () => { }, //非必填
+      fail: (error) => { console.log("init fail")}, //非必填
+    });
+    const txt = "恭喜小张脱单成功";
+    plugin.api.nlp('sentiment', { q: txt, mode: '6class' }).then(res => {
+      console.log("sentiment result : ", res)
+    })
+    
   },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

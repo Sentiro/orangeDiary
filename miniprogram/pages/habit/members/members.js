@@ -62,5 +62,19 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  invite(){
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'wxacode',
+      // 传给云函数的参数
+      data: {
+        teamID:this.data.teamID
+      },
+      success: function (res) {
+        console.log(res.result.sum) // 3
+      },
+      fail: console.error
+    })
   }
 })

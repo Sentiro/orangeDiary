@@ -84,7 +84,7 @@ Page({
   },
   manageMembers(){
     wx.navigateTo({
-      url: "pages/habit/members/members",
+      url: "../members/members",
     })
   },
   /**

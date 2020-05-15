@@ -12,7 +12,7 @@
 
   /*边界*/
   border-radius: 20px;
-  margin: 10px 10px 3px 6px;
+ // margin: 10px 10px 3px 6px;
   width: 300px;
   height: 2rem;
   min-height: 2rem;
@@ -35,4 +35,35 @@
 .preserve-diary{
   background-color: #f8b400;
   border-radius: 400px; 
+}
+
+.addsuspend {
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;  
+    border-radius: 500px;
+    z-index:999; 
+}
+
+.deletesuspend {
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;  
+    border-radius: 500px;
+    z-index:999; 
+}
+
+.submit {
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;  
+    border-radius: 500px;
+    z-index:999; 
+}
+
+.swiper{
+   height: 180px;
 }

@@ -1,66 +1,66 @@
 <!--miniprogram/pages/habit/newHabits/newHabits.wxml-->
-
-<view class="weui-uploader">
-  <view class="img-v weui-uploader__bd"  style="flex-direction:row">
-    <view class='pic' wx:for="{{imgs}}" wx:for-item="item" wx:key="*this" >
-        <image style="width: 100px; height: 100px; background-color: #eeeeee;"
-                class='weui-uploader__img ' 
-                src="{{item}}" 
-                data-index="{{index}}" mode="aspectFill" bindtap="previewImg">
-                <view class="delet" bindtap="deleteImg">
-                   <text class="iconfont icon-shanchu" style='color:#7F8389; font-size:230rpx;'/>
-                </view>
-        </image>
+<view wx:if="{{imgs.length==0}}">
+  <view class="page-section page-section-spacing swiper">
+    <swiper class="swiper">
+    <swiper-item class="text-center">
+    <view class="margin-xl">
+    <view class="padding-left-xl padding-right-xl padding-top-xl flex justify-center">
+        <iconfont class="margin-top-xl" bindtap="chooseImg" name="add_img" size="50" />
+      </view>
+      <text class="margin-top-sm">添加图片</text>
     </view>
-      <!-- 用来提示用户上传图片 -->
-      <view class="weui-uploader__input-box pic" bindtap="chooseImg"> </view>
-  </view>
-  <view class="add" bindtap="chooseImg">
-    <text class="iconfont icon-tianjiatupian" style='color:#7F8389; font-size:230rpx;'/>
-  </view>
-</view>
-
-
-
-<view class="page-section page-section-spacing swiper">
-  <swiper indicator-dots="{{indicatorDots}}"
-    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{background}}" wx:key="*this">
-      <swiper-item>
-        <view class="swiper-item {{item}}"></view>
+      
       </swiper-item>
-    </block>
-  </swiper>
+    </swiper>
+  </view>
+</view>
+<view wx:if="{{imgs.length>0}}">
+  <view class="page-section page-section-spacing swiper">
+    <swiper class="swiper" indicator-dots="true">
+      <block wx:for="{{imgs}}" wx:key="*this">
+        <swiper-item>
+          <image class="bg-mask" src='{{item}}' mode='aspectFill'></image>
+          
+          <view class=" text-xl">          
+          <text class="cuIcon-move deletesuspend bg-gray " bindtap="deletImg"></text>
+            <text class="cuIcon-add addsuspend bg-gray" bindtap="chooseImg"></text>
+          </view>
+
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
 </view>
 
 
-<view class="cu-bar bg-white" bindtap="showCalendar">
+
+<view class="cu-bar bg-white">
   <view class="action sub-title">
-    <text class="text-xl text-bold text-grey">2020年5月3日</text>
+    <text class="text-xl text-bold text-grey">{{date}}</text>
     <text class="bg-grey"></text>
     <!-- last-child选择器-->
   </view>
 </view>
 <view hidden="{{calendarHide}}">
-<calendar calendar-style="calendar"/>
+  <calendar calendar-style="calendar" />
 </view>
 
-<view class="question-input-area">
+
+<view class="">
   <!-- 问题标题区域  -->
-  <view class="question-title-wrap">
+  <view class="padding">
     <!-- 标题输入框 -->
-    <input class="question-title" placeholder=" 标题"  placeholder-style="color:#b3b3b3;font-size:20px;" bindinput="handleTitleInput" maxlength="-1" ></input>
+    <input class="text-xl text-bold text-gray" placeholder="标题" bindinput="handleTitleInput" maxlength="-1"></input>
   </view>
 
   <!-- 问题正文区域  -->
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">
-        <!-- 多行输入框 -->
-        <textarea class="weui-textarea" placeholder="     请输入正文"  placeholder-style="color:#b3b3b3;font-size:14px;" style="height: 12rem" bindinput="handleContentInput" maxlength="-1" />
-      </view>
-    </view>
+  <view class="padding">
+    <!-- 多行输入框 -->
+    <textarea class="text-gray" placeholder="请输入正文" bindinput="handleContentInput" maxlength="-1" auto-height="true" />
   </view>
 </view>
 
-<button class="preserve-diary" bindtap="preserveDiary">保存</button>
+<view class="padding">
+  <button class="submit cu-btn round line-yellow shadow" bindtap="preserveDiary">保存</button>
+</view>

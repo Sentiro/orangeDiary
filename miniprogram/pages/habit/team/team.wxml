@@ -14,9 +14,7 @@
           <!-- 底部样式 last-child选择器-->
         </view>
       </view>
-      <view class="text-grey">
-        <text class="text-cut padding">ID:{{teamID}}</text>
-      </view>
+     
       <view class="text-content margin-left-xs padding-left-sm">
         <text class="text-grey">
                     {{teamDetail}}

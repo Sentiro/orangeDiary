@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/diary/newDiary/newDiary",
     "pages/myInfo/info",
     "pages/habit/modifyTeam/modifyTeam",
     "pages/habit/habit",
@@ -21,7 +22,6 @@
     "pages/im/room/room",
     "pages/diary/diary",
     "pages/diary/myDiary/myDiary",
-    "pages/diary/newDiary/newDiary",
     "pages/habit/myHabits/myHabits",
     "pages/habit/team/team",
     "pages/habit/newHabits/newHabits",
@@ -30,12 +30,17 @@
     "pages/myInfo/setUp/about/about",
     "pages/myInfo/setUp/feedback/feedback",
     "pages/habit/members/members",
-    "pages/habit/modifyTeam/editTag"
+    "pages/habit/modifyTeam/editTag",
+    "pages/habit/members/QRcode"
   ],
   "plugins": {
     "calendar": {
       "version": "1.1.3",
       "provider": "wx92c68dae5a8bb046"
+    },
+    "chatbot": {
+      "version": "1.1.16",
+      "provider": "wx8c631f7e9f2465e1"
     }
   },
   "usingComponents": {
@@ -50,7 +55,6 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2",
   "tabBar": {
     "selectedColor": "#2c2c2c",
     "list": [

@@ -47,6 +47,25 @@
 					"id": -1,
 					"name": "pages/myInfo/setUp/setUp",
 					"pathName": "pages/myInfo/setUp/setUp",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/habit/modifyTeam/modifyTeam",
+					"pathName": "pages/habit/modifyTeam/modifyTeam",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/habit/habit",
+					"pathName": "pages/habit/habit",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/diary/newDiary/newDiary",
+					"pathName": "pages/diary/newDiary/newDiary",
 					"scene": null
 				}
 			]
