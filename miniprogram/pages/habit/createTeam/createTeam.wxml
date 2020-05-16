@@ -1,2 +1,69 @@
 <!--miniprogram/pages/habit/createTeam/createTeam.wxml-->
-<text>miniprogram/pages/habit/createTeam/createTeam.wxml</text>
+<form bindsubmit="formSubmit">
+  <view class="cu-list menu card-menu ">
+    <view class="cu-form-group" bindtap="ChooseImage">
+      <text class="text-grey">队伍头像</text>
+      <view class="cu-avatar radius bg-gray" style="background-image:url({{avatarUrl}})"></view>
+    </view>
+    <view class="cu-form-group">
+      <text class="text-grey margin-right">队伍名称</text>
+      <input name='teamName' placeholder="请输入队伍名称"></input>
+    </view>
+  </view>
+  <view class="cu-list menu card-menu ">
+    <view class="cu-form-group">
+      <text class="text-grey">队伍宣言</text>
+    </view>
+    <view class="cu-form-group">
+      <textarea name='teamDetail' maxlength="-1" bindinput="textareaAInput" placeholder="多行文本输入框"></textarea>
+    </view>
+  </view>
+  <!--members-->
+  <view class="cu-list menu card-menu margin-top">
+    <!--队伍标签-->
+    <view class="cu-item arrow" bindtap="showModal" data-target="bottomModal">
+      <view class="content">
+        <text class="cuIcon-tagfill text-red"></text>
+        <text class="text-grey">标签</text>
+      </view>
+      <view class="action">
+        <view class="cu-tag round bg-{{radom}}orange light" wx:for="{{tagValue}}">{{item}}</view>
+      </view>
+    </view>
+    <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+      <view class="cu-dialog">
+        <view class="cu-bar bg-white">
+          <view class="action text-green">确定</view>
+          <view class="action text-blue" bindtap="hideModal">取消</view>
+        </view>
+        <view class="flex padding-xl" wx:for="{{defaultTag}}">
+          <view class="cu-tag round bg-{{defaultTag.color}}orange light" >{{item}}</view>
+        </view>
+      </view>
+    </view>
+    <!--每天完成的习惯数量-->
+    <view class="cu-item ">
+      <view class="content flex">
+        <iconfont name="juzi1" color='orange' class="margin-right-xs"></iconfont>
+        <text class="text-grey ">队伍计划</text>
+      </view>
+      <view class="action">
+        <picker name='goal' bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+          {{index?picker[index]:'几个橘子？'}}
+        </picker>
+      </view>
+    </view>
+    <view class="cu-item arrow" bindtouchend="manageMembers">
+      <view class="content">
+        <text class="cuIcon-emojiflashfill text-pink"></text>
+        <text class="text-grey">队员</text>
+      </view>
+    </view>
+  </view>
+  <!--submit-->
+  <view class="text-center padding-xl ">
+    <button formType="submit" class="cu-btn bg-yellow round shadow" data-target="Image">
+      <text class="text-lg">确定</text>
+    </button>
+  </view>
+</form>

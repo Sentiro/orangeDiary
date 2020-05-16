@@ -1,11 +1,11 @@
 // miniprogram/pages/habit/modifyTeam/modifyTeam.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    avatarUrl: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg',
+    light:'light',
+    avatarUrl: '',
     teamName: '单词打卡小分队',
     tagColor: 'yellow',
     tagValue: ['音乐','学习'],
@@ -14,14 +14,95 @@ Page({
     members:[],
     goal:1,
     picker: ['1', '2', '3'],
-    index:''
+    index:'',
+    defaultTag:[
+      {
+        index:0,
+        name:'学习',
+        color:'red',
+        select:''
+      }, {
+        index: 1,
+        name: '健康',
+        color: 'yellow',
+        select: ''
+      }, {
+        index: 2,
+        name: '运动',
+        color: 'green',
+        select: ''
+      }, {
+        index: 3,
+        name: '自律',
+        color: 'olive',
+        select: ''
+      }, {
+        index: 4,
+        name: '专注',
+        color: 'cyan',
+        select: ''
+      }, {
+        index: 5,
+        name: '早起早睡',
+        color: 'orange',
+        select: ''
+      }, {
+        index: 6,
+        name: 'keep',
+        color: 'blue',
+        select: ''
+      }, {
+        index: 7,
+        name: '乐器',
+        color: 'purple',
+        select: ''
+      }, {
+        index: 8,
+        name: '趣弹up',
+        color: 'mauve',
+        select: ''
+      }, {
+        index: 9,
+        name: '时间管理',
+        color: 'pink',
+        select: ''
+      }, {
+        index: 10,
+        name: '生活',
+        color: 'brown',
+        select: ''
+      }, {
+        index: 11,
+        name: '技能',
+        color: 'grey',
+        select: ''
+      },
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var appInstance = getApp();
+    var userID = appInstance.globalData.openid;
+    var teamID=0;
+    const db = wx.cloud.database();
+    db.collection('user').where({
+      _openid: userID,
+    }).get({
+      success: (res) => {
+        teamID=res.data[0].teamID;
+        console.log(teamID);
+        if (teamID == 0) {
+          wx.setNavigationBarTitle({
+            title: '创建队伍'
+          })
+        }
 
+      }
+    });
+   
   },
   PickerChange(e) {
     console.log(e);
@@ -41,6 +122,47 @@ Page({
         
       }
     });
+  },
+  tag(){
+    var tempTag=new Array();
+    for(var i=0;i<this.data.defaultTag.length;i++){
+      var temp = this.data.defaultTag[i];
+      if(temp.select=='light'){
+        tempTag.push(temp);
+      }
+    }
+    this.setData({
+      tagValue: tempTag,
+       modalName: null
+    })
+    
+  },
+  setTag(e){
+    var currentTag = e.currentTarget.dataset['tag'];
+    console.log(currentTag);
+    var list=this.data.defaultTag;
+    if (currentTag.select=='light'){
+      list[currentTag.index].select='';
+      this.setData({
+        defaultTag: list
+      })
+    }else{
+      list[currentTag.index].select = 'light';
+      this.setData({
+        defaultTag: list
+      })
+    }
+   
+  },
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -132,8 +254,18 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    let title, imageUrl;
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      title = '加入组队打卡'
+     // imageUrl = '***.png';
+    }
+    return {
+      title: title,
+      imageUrl: imageUrl,//这个是分享的图片
+      path: '/pages/habit/team?teamID=123456',
+    }
   },
   
 })
