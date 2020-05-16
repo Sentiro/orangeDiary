@@ -22,7 +22,7 @@
           <image class="bg-mask" src='{{item}}' mode='aspectFill'></image>
           
           <view class=" text-xl">          
-          <text class="cuIcon-move deletesuspend bg-gray " bindtap="deletImg"></text>
+          <text class="cuIcon-move deletesuspend bg-gray " bindtap="deleteImg"></text>
             <text class="cuIcon-add addsuspend bg-gray" bindtap="chooseImg"></text>
           </view>
 
@@ -61,6 +61,7 @@
   </view>
 </view>
 
+<!-- 保存日记 -->
 <view class="padding">
   <button class="submit cu-btn round line-yellow shadow" bindtap="preserveDiary">保存</button>
 </view>

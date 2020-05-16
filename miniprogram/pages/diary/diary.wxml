@@ -4,7 +4,7 @@
   <iconfont name="list" size="40"/>
 </view>
 
-
+<!--带图片的卡片-->
 <view class="cu-card article {{isCard?'no-card':''}}" bindtap="showContent">
   <view class="cu-item shadow">
     <!--标题-->
@@ -29,3 +29,22 @@
   </view>
 </view>
 
+
+<!--不带图片的卡片-->
+<view class="cu-card article {{isCard?'no-card':''}}" bindtap="showContent">
+  <view class="cu-item shadow">
+    <!--标题-->
+    <view class="title">
+      <view class="text-cut">{{title}}</view>
+    </view>
+    <!--正文-->
+    <view class="content2">
+      <view class="desc">
+        <view class="text-content"> {{text}}</view>
+        <view>
+          <view class="cu-tag bg-red light sm round">{{date}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

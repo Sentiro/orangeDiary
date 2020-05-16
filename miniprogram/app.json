@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/diary/newDiary/newDiary",
     "pages/myInfo/info",
     "pages/habit/modifyTeam/modifyTeam",
     "pages/habit/habit",
@@ -22,6 +21,7 @@
     "pages/im/room/room",
     "pages/diary/diary",
     "pages/diary/myDiary/myDiary",
+    "pages/diary/newDiary/newDiary",
     "pages/habit/myHabits/myHabits",
     "pages/habit/team/team",
     "pages/habit/newHabits/newHabits",
