@@ -100,10 +100,6 @@ Page({
       urls: imgs
     })
   },
-
-
-
-  
   handleTitleInput: function (e) {
     var that = this;
     that.setData({
@@ -118,8 +114,14 @@ Page({
   },
    //添加日记记录
   preserveDiary: function () {
+    var article=this.data.text;
     const db = wx.cloud.database()
     var that = this;
+    //情感分析
+    plugin.api.nlp('sentiment', { q: article, mode: '3class' }).then(res => {
+      console.log("sentiment result : ", res)
+      console.log((res.result[0][1] - res.result[2][1]) * 100 / (res.result[0][1] + res.result[2][1]));
+    });   
     db.collection('diary').add({
       // data 字段表示需新增的 JSON 数据
       data: {
@@ -145,17 +147,7 @@ Page({
     this.setData({
       date: time.getFullYear() + "年" + (time.getMonth() + 1) + "月" + time.getDate() + "日",
     });
-    plugin.init({
-      appid: "wx7e1ea8c032211c74", //小程序示例账户，仅供学习和参考
-      openid: "oOjE85GnO1eb1FXvBb9QrhFdhIsU", //用户的openid，非必填，建议传递该参数
-      success: () => { }, //非必填
-      fail: (error) => { console.log("init fail")}, //非必填
-    });
-    const txt = "恭喜小张脱单成功";
-    plugin.api.nlp('sentiment', { q: txt, mode: '6class' }).then(res => {
-      console.log("sentiment result : ", res)
-    })
-    
+    const txt = "恭喜小张脱单成功";  
   },
 
 

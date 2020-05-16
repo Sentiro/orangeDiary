@@ -1,6 +1,6 @@
 // miniprogram/pages/habit/habit.js
 const app = getApp();
-var util = require('../../utils.js');
+
 Page({
   data: {
     CustomBar: null,

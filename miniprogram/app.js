@@ -1,8 +1,19 @@
 //app.js
 const app = getApp();
-
+var util = require('utils.js');
+var plugin = requirePlugin("chatbot");
 App({
   onLaunch: function() {
+    plugin.init({
+      appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja", //小程序示例账户，仅供学习和参考
+      openid: "", //用户的openid，非必填，建议传递该参数
+      success: () => { }, //非必填
+      fail: (error) => { console.log("init fail") }, //非必填
+    });
+    const txt = "小张脱单成功";
+    plugin.api.nlp('sentiment', { q: txt, mode: '3class' }).then(res => {
+      console.log("sentiment result : ", res.result);
+    })
    
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
