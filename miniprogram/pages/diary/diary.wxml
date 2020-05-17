@@ -5,14 +5,14 @@
 </view>
 
 <!--带图片的卡片-->
-<view class="cu-card article {{isCard?'no-card':''}}" bindtap="showContent">
+<view class="cu-card article {{isCard?'no-card':''}}" wx:for="{{ne}}" wx:key="ne" bindtap="showContent">
   <view class="cu-item shadow">
     <!--标题-->
     <view class="title">
-      <view class="text-cut">{{title}}</view>
+      <view class="text-cut">{{item.title}}</view>
     </view>
     <!--图片-->
-    <view class="content">
+    <view wx:if="{{item.imgs.length >= 1}}" class="content">
       <image style="width: 400px; height: 140px;"
             src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill">
       </image>
@@ -20,29 +20,9 @@
     <!--正文-->
     <view class="content2">
       <view class="desc">
-        <view class="text-content"> {{text}}</view>
+        <view class="text-content"> {{item.text}}</view>
         <view>
-          <view class="cu-tag bg-red light sm round">{{date}}</view>
-        </view>
-      </view>
-    </view>
-  </view>
-</view>
-
-
-<!--不带图片的卡片-->
-<view class="cu-card article {{isCard?'no-card':''}}" bindtap="showContent">
-  <view class="cu-item shadow">
-    <!--标题-->
-    <view class="title">
-      <view class="text-cut">{{title}}</view>
-    </view>
-    <!--正文-->
-    <view class="content2">
-      <view class="desc">
-        <view class="text-content"> {{text}}</view>
-        <view>
-          <view class="cu-tag bg-red light sm round">{{date}}</view>
+          <view class="cu-tag bg-red light sm round">{{item.date}}  {{item.time}}</view>
         </view>
       </view>
     </view>

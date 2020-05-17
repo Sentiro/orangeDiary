@@ -179,7 +179,7 @@ Page({
             // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
             title: this.data.title,
             text: this.data.text,
-            date: time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate(),
+            date: time.getFullYear() + "-" + (time.getMonth() + 1)+ "-" +time.getDate(),
             time: time.getHours()+":"+time.getMinutes(),
             imgs :this.data.imgsID
           },
