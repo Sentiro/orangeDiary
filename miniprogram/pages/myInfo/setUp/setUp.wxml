@@ -1,4 +1,5 @@
 <!--pages/myInfo/setUp/setUp.wxml-->
+<view class="padding">
 <view class="padding-xl radius shadow bg-orange light margin-bottom"  style="height:100vh"> 
 
  <!-- <view class="padding" style="height:75vh;width:40rem;" > -->
@@ -68,3 +69,4 @@
   <view class="padding-xl bg-white"></view>
 
   </view>
+</view>

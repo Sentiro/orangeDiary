@@ -2,22 +2,24 @@
 <view class="padding-xl radius bg-white light flex align-center">
   <view class=" margin-lg" style="width:32vh">
     <view class="text-xl username text-cut">
-      <text>{{userName}}麻辣小龙虾</text>
+      <open-data type="userNickName" default-text="您尚未登陆"></open-data>
     </view>
     <view class="text-gray padding-top">
       <text class="text-cut">{{userName}}你一票我一票麻辣小龙虾就出道</text>
     </view>
   </view>
   <view class="flex justify-end margin-lg">
-    <text class="cu-avatar round margin-center xl" style="background-image: url({{avatarUrl}})"></text>
+    <view class="cu-avatar round margin-center xl" style="">
+    <open-data type="userAvatarUrl" default-avatar="user-unlogin.png" style="border-radius:50%;overflow:hidden;display:block;height:17vw;width:17vw"></open-data>
+    </view>
   </view>
 </view>
 
 <view class="padding bg-white margin-top card-menu cu-list menu">
   <text class="cuIcon-like"></text>平均情绪值
   <view class="flex margin-top">
-    <view class="cu-progress round bg-yellow light" style="height:2rem">
-      <view class="bg-yellow" style="width:5rem;"></view>
+    <view class="cu-progress round bg-yellow light" style="height:7vh">
+      <view class="bg-yellow" style="width:5rem"></view>
       <!--宽度要算一下-->
     </view>
   </view>
@@ -44,7 +46,7 @@
         </view>
         <view class="text"> 情绪管理</view>
       </view>
-      <view class="padding-sm" bindtap="onAddClick">
+      <view class="padding-sm" bindtap="onMyLoveClick">
         <view class="padding-sm radius text-center shadow-blur">
           <iconfont name="xin" size="25"></iconfont>         
         </view>
@@ -53,38 +55,50 @@
     </view>
   </view>
 
-  <view class="cu-list menu card-menu margin-top">
+<view class="padding bg-white margin-top card-menu cu-list menu">
+  <view class="cu-bar margin-top bg-white">
+  <view class="action">
+    <text class="cuIcon-notice text-gray"></text>
+    <text class="text-grey">开启通知</text>
+  </view>
+  <view class="action">
+    <text class="text-df margin-right-sm"></text>
+    <switch class="sm" bindchange="SetShadow"></switch>
+  </view>
+   </view>
+
     <view class="cu-item arrow" bindtouchend="handleHistory">
       <view class="content">
         <text class="cuIcon-circlefill text-grey"></text>
         <text class="text-grey">历史记录</text>
       </view>
     </view>
-    <view class="cu-item arrow" bindtouchend="handleSetUp">
+    <view class="cu-item arrow" bindtouchend="goToHelp">
       <view class="content">
-        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
-        <text class="text-grey">通知</text>
+        <image src="help.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">帮助</text>
       </view>
     </view>
-    <view class="cu-item arrow" bindtouchend="handleSetUp">
+  <view class="cu-item arrow" bindtouchend="goToFeedback">
       <view class="content">
-        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
-        <text class="text-grey">鸣谢</text>
-      </view>
-    </view>
-    <view class="cu-item arrow" bindtouchend="handleSetUp">
-      <view class="content">
-        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
+        <image src="feedback.png" class="png" mode="aspectFit"></image>
         <text class="text-grey">反馈</text>
       </view>
     </view>
-    <view class="cu-item arrow" bindtouchend="handleSetUp">
+  <view class="cu-item arrow" bindtouchend="goToAbout">
       <view class="content">
-        <image src="/images/logo.png" class="png" mode="aspectFit"></image>
+        <image src="about.png" class="png" mode="aspectFit"></image>
         <text class="text-grey">关于</text>
       </view>
     </view>
+  <view class="cu-item arrow" bindtouchend="goToThanks">
+      <view class="content">
+        <image src="ganxie.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">鸣谢</text>
+      </view>
+    </view>
   </view>
+
   <view class="text-center padding-xl ">
     <button formType="submit" class="cu-btn bg-yellow round">
       <text class="text-lg">登出</text>

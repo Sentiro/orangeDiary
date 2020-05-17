@@ -4,7 +4,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-      index: null
+      index: null,
+      imgList: [],
   },
   ChooseImage() {
     wx.chooseImage({

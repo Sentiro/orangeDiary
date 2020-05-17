@@ -1,91 +1,32 @@
 <!--pages/myInfo/history/history.wxml-->
 
-<view class="padding">
-<view class="padding-xl radius shadow bg-orange light margin-top text-center"  style="height:30vh">      
-  <text class="cu-avatar round margin-center"  style="width:4rem;height:12vh;"></text>
-  <view class="text-gray light">\n\n\n昵称</view>
-  </view>
-</view>
-
-<view class="cu-timeline">
-  <view class="cu-time">昨天</view>
-  <view class="cu-item cur cuIcon-noticefill">
-    <view class="content bg-green shadow-blur">
-      <text>22:22</text> 【广州市】快件已到达地球
+<view class="padding-xl radius bg-white light flex align-center">
+  <view class=" margin-lg" style="width:32vh">
+    <view class="text-xl username text-cut">
+      <open-data type="userNickName"></open-data>
+    </view>
+    <view class="text-gray padding-top">
+      <text class="text-cut">你一票我一票麻辣小龙虾就出道</text>
     </view>
   </view>
-  <view class="cu-item text-red cuIcon-attentionforbidfill">
-    <view class="content bg-red shadow-blur">
-      这是第一次，我家的铲屎官走了这么久。久到足足有三天！！
-    </view>
-  </view>
-  <view class="cu-item text-grey cuIcon-evaluate_fill">
-    <view class="content bg-grey shadow-blur">
-      这是第一次，我家的铲屎官走了这么久。
-    </view>
-  </view>
-  <view class="cu-item text-blue">
-    <view class="bg-blue content">
-      <text>20:00</text> 【月球】快件已到达月球，准备发往地球
-    </view>
-    <view class="bg-cyan content">
-      <text>10:00</text> 【银河系】快件已到达银河系，准备发往月球
+   <view class="flex justify-end margin-lg">
+    <view class="cu-avatar round margin-center xl">
+    <open-data type="userAvatarUrl" style="border-radius:50%;overflow:hidden;display:block;height:17vw;width:17vw"></open-data>
     </view>
   </view>
 </view>
 
-<view class="cu-timeline">
-  <view class="cu-time">06-17</view>
-  <view class="cu-item">
-    <view class="content">
-      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
-    </view>
-  </view>
-</view>
-
-<view class="cu-timeline">
-  <view class="cu-time">06-17</view>
-  <view class="cu-item">
-    <view class="content">
+<view class="cu-timeline" wx:for='{{listDatas}}' wx:key='index'>
+  <view class="cu-time">{{item.date}}</view>
+  <view class="cu-item text-yellow">
+    <view class="content bg-orange light shadow-blur">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-cyan">上午</view>
-        <view class="cu-tag line-cyan">10:00</view>
+        <view class="cu-tag bg-olive">时间</view>
+        <view class="cu-tag line-olive">{{item.time}}</view>
       </view>
-      <view class="margin-top">这是第一次，我家的铲屎官走了这么久。久到足足有三天！！ 在听到他的脚步声响在楼梯间的那一刻，我简直想要破门而出，对着他狠狠地吼上10分钟，然后再看心情要不要他进门。</view>
-    </view>
-  </view>
-  <view class="cu-item text-blue">
-    <view class="bg-blue shadow-blur content">
-      <view class="cu-list menu-avatar radius">
-        <view class="cu-item">
-          <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
-          <view class="content">
-            <view class="text-grey">文晓港</view>
-            <view class="text-gray text-sm">
-              <text class="cuIcon-infofill text-red"></text> 消息未送达</view>
-          </view>
-          <view class="action">
-            <view class="text-grey text-xs">22:20</view>
-            <view class="cu-tag round bg-grey sm">5</view>
-          </view>
-        </view>
-        <view class="cu-item">
-          <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);">
-            <view class="cu-tag badge">99+</view>
-          </view>
-          <view class="content">
-            <view class="text-grey">文晓港
-              <view class="cu-tag round orange sm">SVIP</view>
-            </view>
-            <view class="text-gray text-sm">
-              <text class="cuIcon-redpacket_fill text-red"></text> 收到红包</view>
-          </view>
-          <view class="action">
-            <view class="text-grey text-xs">22:20</view>
-            <text class="cuIcon-notice_forbid_fill text-gray"></text>
-          </view>
-        </view>
-      </view>
+      <view class="margin-top">{{item.name}}  {{item.title}}</view>
+      <view>{{item.text}}</view>
     </view>
   </view>
 </view>
+

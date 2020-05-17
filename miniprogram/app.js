@@ -4,6 +4,7 @@ var util = require('utils.js');
 var plugin = requirePlugin("chatbot");
 App({
   onLaunch: function() {
+
     plugin.init({
       appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja", //小程序示例账户，仅供学习和参考
       openid: "", //用户的openid，非必填，建议传递该参数
@@ -30,8 +31,8 @@ App({
         name: 'login',
         data: {},
         success: res => {
-          console.log('[云函数] [login] user openid: ', res.result.openid)
-          this.globalData.openid = res.result.openid
+          console.log('[云函数] [login] user openid: ', res.result.openid);
+          this.globalData.openid = res.result.openid;
         },
         fail: err => {
           console.error('[云函数] [login] 调用失败', err)
@@ -40,31 +41,10 @@ App({
           })
         }
       })
-      wx.getSystemInfo({
-        success: e => {
-          this.globalData.StatusBar = e.statusBarHeight;
-          let capsule = wx.getMenuButtonBoundingClientRect();
-          if (capsule) {
-            this.globalData.Custom = capsule;
-            this.globalData.CustomBar = capsule.bottom + capsule.top - e.statusBarHeight;
-          } else {
-            this.globalData.CustomBar = e.statusBarHeight + 50;
-          }
-        }
-      })
-      wx.getSetting({
-        success: res => {
-          if (res.authSetting['scope.userInfo']) {
-            // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-            wx.getUserInfo({
-              success: res => {
-                this.setData({
-                  avatarUrl: res.userInfo.avatarUrl,
-                  userInfo: res.userInfo
-                })
-              }
-            })
-          }
+      wx.cloud.callFunction({
+        name: 'userInfo',
+        success:res=>{
+          console.log('[云函数] [userInfo] : ',res.result.event);
         }
       })
     }

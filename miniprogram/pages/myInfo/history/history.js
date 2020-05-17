@@ -1,28 +1,66 @@
 // pages/myInfo/history/history.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+     listDatas:[],
+     habitList:[],
+     diaryList:[]
 
-  },
-
-  handleBack(e){
-    wx.navigateBack({
-      complete: (res) => {},
-      delta: 1,
-      fail: (res) => {},
-      success: (res) => {},
-    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const db=wx.cloud.database()
+    var appInstance = getApp();
+    var userID = appInstance.globalData.openid;
+    
+    db.collection('habit').where({
+      _openid: userID,
+    }).get({
+      success: (res) => {
+        this.setData({
+          habitList:res.data
+        });
+        console.log(this.data.habitList);
 
+    db.collection('diary').where({
+          _openid:userID,
+        }).get({
+          success:(res)=>{
+            this.setData({
+              diaryList:res.data
+            });
+            console.log(this.data.diaryList);       
+            this.setData({
+              listDatas:this.data.habitList.concat(this.data.diaryList).sort((a,b)=>{
+                var aDatestr=a.date+" "+a.time;
+                var bDatestr=b.date+" "+b.time;
+                var aDate=new Date(aDatestr);
+                var bDate=new Date(bDatestr);
+                if(aDate>bDate)
+                  return -1;
+                else if(aDate<bDate)
+                  return 1;
+                else{
+                  console.log(0);
+                  return 0;
+                }
+              })
+            });
+            console.log(this.data.listDatas);
+          },
+        });
+      },
+      fail:(res)=>{
+        console.log("调用失败")
+      }
+    });
+    
+    
+    
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
