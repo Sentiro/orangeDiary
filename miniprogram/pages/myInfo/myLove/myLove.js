@@ -1,61 +1,32 @@
-// pages/myInfo/info.js
-const app = getApp();
+// miniprogram/pages/myInfo/myLove/myLove.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo:{},
-    avatarUrl: 'user-unlogin.png',
-    width:5
+    postList:[]
   },
- 
-goToAbout(e){
-  wx.navigateTo({
-    url: 'setUp/about/about'
-  })
-},
 
-goToHelp(e){
-  wx.navigateTo({
-    url: 'setUp/help/help'
-  })
-},
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    const db=wx.cloud.database()
+    var appInstance = getApp();
+    var userID = appInstance.globalData.openid;
 
-goToThanks(e){
-  wx.navigateTo({
-    url: 'setUp/thanks/thanks'
-  })
-},
-
-goToFeedback(e){
-  wx.navigateTo({
-    url: 'setUp/feedback/feedback'
-  })
-},
-  handleSetUp(e){
-    wx.navigateTo({
-      url: 'setUp/setUp'
+    db.collection('post').where({
+      _openid: userID,
+    }).get({
+      success: (res) => {
+        this.setData({
+          habitList:res.data
+        });
+        console.log(this.data.habitList);
+      }
     })
-  },
- 
-  handleHistory(e){
-    wx.navigateTo({
-      url: 'history/history'
-    })
-  },
-onMyLoveClick(e){
-  wx.navigateTo({
-    url: 'myLove/myLove'
-  })
-},
 
-  onShow(){
-    
-  },
-  onLoad() {
-    
   },
 
   /**
@@ -68,7 +39,10 @@ onMyLoveClick(e){
   /**
    * 生命周期函数--监听页面显示
    */
-  
+  onShow: function () {
+
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */

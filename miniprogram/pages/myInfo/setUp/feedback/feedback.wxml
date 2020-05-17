@@ -1,27 +1,13 @@
 <!--miniprogram/pages/myInfo/setUp/feedback/feedback.wxml-->
-<form>
-<view class="cu-form-group margin-top">
-		<view class="title">用户名</view>
-		<input placeholder=""></input>
+<view class="cu-bar bg-white margin-top">
+ <view class="action">
+ 问题反馈
+ </view>
+ </view>
+	<view class="cu-form-group">
+		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="请您尽可能详细描述您在使用过程中所遇到的问题"></textarea>
 	</view>
-
-<view class="cu-form-group">
-		<view class="title">手机号码</view>
-		<input placeholder=""></input>
-		<view class="cu-capsule radius">
-			<view class="cu-tag bg-blue">
-				+86
-			</view>
-			<view class="cu-tag line-blue">
-				中国大陆
-			</view>
-		</view>
-	</view>
-
-<view class="cu-form-group align-start">
-		<view class="title">问题反馈</view>
-		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="请您尽可能详细描述您在使用过程中所遇到的问题"></textarea>
-	</view>
+	
 
   <view class="cu-bar bg-white margin-top">
 		<view class="action">
@@ -44,5 +30,7 @@
 			</view>
 		</view>
 	</view>
+<view class="cu-bar bg-white margin-top text-right">
+  <button class="cu-btn line-yellow round lg shadow">提交</button>
+</view>
 
-</form>
