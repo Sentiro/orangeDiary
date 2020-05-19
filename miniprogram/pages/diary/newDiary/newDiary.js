@@ -1,6 +1,7 @@
 // miniprogram/pages/habit/newHabits/newHabits.js
 var util = require('../../../utils.js');
 var plugin = requirePlugin("chatbot");
+var app=getApp();
 Page({
   /**
    * 页面的初始数据

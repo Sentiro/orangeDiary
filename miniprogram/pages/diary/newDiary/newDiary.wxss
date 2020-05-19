@@ -58,3 +58,8 @@
 .swiper{
    height: 180px;
 }
+
+.image{
+  max-width:100%;
+  display: inline-block;
+}
