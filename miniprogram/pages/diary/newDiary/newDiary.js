@@ -190,7 +190,15 @@ Page({
         })
         console.log('chenggongle')
         wx.hideLoading()
-        wx.switchTab({ url: '/pages/diary/diary'})
+        wx.switchTab({ 
+          url: '/pages/diary/diary',
+          success: function (e) {
+            var page = getCurrentPages().pop();
+            console.log(page);
+            //if (page == undefined || page == null) return;
+            page.onLoad();
+          }       
+        })
       })
     }
   },

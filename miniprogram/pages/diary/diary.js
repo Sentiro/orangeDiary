@@ -39,9 +39,10 @@ Page({
   },
 
   onLoad: function(options) {
+    console.log('zailimian')
     var appInstance = getApp();
     var userID = appInstance.globalData.openid;
-    console.log('成功');
+    //console.log('成功');
     console.log(userID);
     const db = wx.cloud.database();
     db.collection('diary').where({

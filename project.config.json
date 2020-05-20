@@ -54,18 +54,33 @@
 					"id": -1,
 					"name": "pages/habit/modifyTeam/modifyTeam",
 					"pathName": "pages/habit/modifyTeam/modifyTeam",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/habit/habit",
 					"pathName": "pages/habit/habit",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/diary/newDiary/newDiary",
 					"pathName": "pages/diary/newDiary/newDiary",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/diary/myDiary/myDiary",
+					"pathName": "pages/diary/myDiary/myDiary",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/diary/diary",
+					"pathName": "pages/diary/diary",
 					"scene": null
 				}
 			]
