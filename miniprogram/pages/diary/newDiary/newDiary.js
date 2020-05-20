@@ -150,10 +150,13 @@ Page({
         title: '加载中...',
       })
       let promiseArr = [];
+      //获取openid
+      var appInstance = getApp();
+      var userID = appInstance.globalData.openid;
       for (var i = 0; i < imgs.length; i++){
         promiseArr.push(new Promise((reslove, reject) => {
           wx.cloud.uploadFile({
-            cloudPath: 'diaryPicture/'+i,
+            cloudPath: userID+'/'+this.data.title+'/'+i,
             // 指定要上传的文件的小程序临时文件路径
             filePath: imgs[i],
             // 成功回调
@@ -182,7 +185,7 @@ Page({
             text: this.data.text,
             date: time.getFullYear() + "-" + (time.getMonth() + 1)+ "-" +time.getDate(),
             time: time.getHours()+":"+time.getMinutes(),
-            imgs :this.data.imgsID
+            imgs :this.data.imgsID,
           },
         })
         console.log('chenggongle')

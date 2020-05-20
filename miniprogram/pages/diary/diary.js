@@ -12,8 +12,10 @@ Page({
     })
   },
   showContent(e){
+    var data = JSON.stringify(e.currentTarget.dataset.key);
+    console.log(e.currentTarget.dataset.key);
     wx.navigateTo({
-      url: "/pages/diary/myDiary/myDiary"
+      url: '/pages/diary/myDiary/myDiary?item='+data
     })
   },
 
@@ -47,6 +49,21 @@ Page({
     }).get({
       success: res => {
         console.log('chenggong');
+        //下载图片
+        for(var i=0; i<res.data.reverse().length;i++){
+          for(var j=0;j<res.data.reverse()[i].imgs.length;j++){
+            console.log(res.data.reverse()[i].imgs[j]);
+            wx.cloud.downloadFile({
+              fileID: res.data.reverse()[i].imgs[j], // 文件 ID
+              success: res => {
+                // 返回临时文件路径
+                res.data.reverse()[i].imgs[j] = res.tempFilePath;
+              },
+              fail: console.error
+            })
+          }
+        }
+        //给ne赋值，方便页面加载。
         this.setData({
           ne: res.data.reverse()
         })
