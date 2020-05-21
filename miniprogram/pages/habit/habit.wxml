@@ -80,6 +80,7 @@
       </view>
     </view>
   </view>
+
   <!--组队-->
   <view wx:if="{{TabCur==1}}">
     <view wx:if="{{hasTeam}}">
@@ -96,9 +97,9 @@
           <view class="radius">
             <view class="action border-title cu-list menu ">
               <view class="cu-item">
-                <text class=" text-xl text-bold">{{teamName}}</text>
+                <text class=" text-xl text-bold">{{team.teamName}}</text>
                 <view class="action">
-                  <view class="cu-tag round bg-{{tagColor}} light">{{tagValue}}</view>
+                  <view class="cu-tag round bg-{{item.color}}yellow light" wx:for='{{team.tagValue}}'>{{item}}</view>
                 </view>
                 <!-- 底部样式 last-child选择器-->
               </view>
@@ -106,14 +107,14 @@
             
             <view class="text-content margin-left-xs padding-left-sm">
               <text class="text-grey">
-                    {{teamDetail}}
+                    {{team.teamDetail}}
 									</text>
             </view>
           </view>
         </view>
-
-        <view class="cu-list menu-avatar padding">
-          <view class="cu-item margin-top" wx:for="{{teamMember}}" wx:key>
+        <!--有队员-->
+        <view class="cu-list menu-avatar padding" wx:if="{{team.teamMember.length!=0}}">
+          <view class="cu-item margin-top" wx:for="{{team.teamMember}}" >
             <view class="cu-avatar round lg" style="background-image:url({{item.img}});"></view>
             <view class="content">
               <view class="text-grey">{{item.name}}</view>
@@ -134,6 +135,8 @@
             </view>
           </view>
         </view>
+        <!--没有队员-->
+        <view >暂时没有队员请分享页面组队</view>
         <view class="text-center padding-xl">
           <button wx:if="{{leader}}" bindtap="turnToTeamSetting" class="cu-btn bg-yellow round shadow">
             <text class="text-lg">设置</text>

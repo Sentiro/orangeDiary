@@ -32,7 +32,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const db = wx.cloud.database();
+    db.collection('user').where({
+      _openid: userID,
+    }).get({
+      success: (res) => {
+        console.log(res.data);
+        this.setData({
+          team: res.data
+        });
+        console.log(habitList);
+      }
+    });
   },
 
   /**

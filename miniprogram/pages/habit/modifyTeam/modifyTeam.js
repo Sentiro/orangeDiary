@@ -1,4 +1,5 @@
 // miniprogram/pages/habit/modifyTeam/modifyTeam.js
+var util = require('../../../utils.js');
 Page({
   /**
    * 页面的初始数据
@@ -84,30 +85,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var appInstance = getApp();
-    var userID = appInstance.globalData.openid;
-    var teamID=0;
-    const db = wx.cloud.database();
-    db.collection('user').where({
-      _openid: userID,
-    }).get({
-      success: (res) => {
-        teamID=res.data[0].teamID;
-        console.log(teamID);
-        if (teamID == 0) {
-          wx.setNavigationBarTitle({
-            title: '创建队伍'
-          })
-        }
-
-      }
-    });
+    //var queryBean = JSON.parse(options.item);
+    console.log(options.item);
+    this.setData({
+      team: queryBean
+    })
+    
    
   },
   PickerChange(e) {
     console.log(e);
+    var temp=this.data.team.goal;
     this.setData({
-      index: e.detail.value
+      [temp]: e.detail.value
     })
   },
   ChooseImage() {
@@ -165,6 +155,7 @@ Page({
     })
   },
   formSubmit: function (e) {
+    var teamID= util.wxuuid();
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     const db = wx.cloud.database();
     wx.cloud.uploadFile({
@@ -184,7 +175,7 @@ Page({
             members: this.data.members,
             tagValue: this.data.tagValue,
             teamDetail: this.data.teamDetail,
-            goal: this.data.goal
+            goal: this.data.goal,
           },
           success: function (res) {
             // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
@@ -196,7 +187,6 @@ Page({
             wx.switchTab({
               url: "/pages/habit/habit"
             })
-
           }
         })
       },

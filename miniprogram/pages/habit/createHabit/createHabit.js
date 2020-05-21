@@ -335,21 +335,26 @@ Page({
          // 为待办事项添加一个地理位置（113°E，23°N）
          done: false
        },
-       success: function (res) {
+       success: function (res) {  
+         //显示成功信息
          wx.showToast({
            title: '成功',
            icon: 'success',
-           duration: 2000
-         })
-         wx.switchTab({
-           url: '/pages/habit/habit',
-           success: function (e) {
-             var page = getCurrentPages().pop();
-             console.log(page);
-             //if (page == undefined || page == null) return;
-             page.onLoad();
+           duration: 2000,
+           success:function(e){
+             //显示成功信息成功后跳转页面
+             wx.switchTab({
+               url: '/pages/habit/habit',
+               success: function (e) {
+                 var page = getCurrentPages().pop();
+                 console.log(page);
+                 //if (page == undefined || page == null) return;
+                 page.onLoad();
+               }
+             })
            }
-         })
+         })  
+        
        }
      })
   },

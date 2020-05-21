@@ -75,12 +75,20 @@
 					"id": -1,
 					"name": "pages/diary/myDiary/myDiary",
 					"pathName": "pages/diary/myDiary/myDiary",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/diary/diary",
 					"pathName": "pages/diary/diary",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/habit/team/team",
+					"pathName": "pages/habit/team/team",
 					"scene": null
 				}
 			]

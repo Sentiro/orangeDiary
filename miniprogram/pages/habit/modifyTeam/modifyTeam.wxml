@@ -3,11 +3,11 @@
   <view class="cu-list menu card-menu ">
     <view class="cu-form-group" bindtap="ChooseImage">
       <text class="text-grey">队伍头像</text>
-      <view class="cu-avatar radius bg-gray" style="background-image:url({{avatarUrl}})"></view>
+      <view class="cu-avatar radius bg-gray" style="background-image:url({{team.avatar}})"></view>
     </view>
     <view class="cu-form-group text-df">
       <text class="text-grey margin-right">队伍名称</text>
-      <input name='teamName' class="" placeholder="请输入队伍名称" value="{{teamName}}"></input>
+      <input name='teamName' class="" placeholder="请输入队伍名称" value="{{team.teamName}}"></input>
     </view>
   </view>
   <view class="cu-list menu card-menu ">
@@ -15,7 +15,7 @@
       <text class="text-grey">队伍宣言</text>
     </view>
     <view class="cu-form-group">
-      <textarea name='teamDetail' maxlength="-1" bindinput="textareaAInput" placeholder="多行文本输入框" value="{{teamDetail}}"></textarea>
+      <textarea name='teamDetail' maxlength="-1" bindinput="textareaAInput" placeholder="多行文本输入框" value="{{team.teamDetail}}"></textarea>
     </view>
   </view>
   <!--members-->
@@ -27,7 +27,7 @@
         <text class="text-grey">标签</text>
       </view>
       <view class="action">
-        <view class="cu-tag round bg-{{item.color}} light" wx:for="{{tagValue}}">{{item.name}}</view>
+        <view class="cu-tag round bg-{{item.color}} light" wx:for="{{team.tagValue}}">{{item.name}}</view>
       </view>
     </view>
     <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
@@ -47,7 +47,7 @@
         <text class="text-grey ">队伍计划</text>
       </view>
       <view class="action">
-        <picker name='goal' bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+        <picker name='goal' bindchange="PickerChange" value="{{team.goal}}" range="{{picker}}">
           {{index?picker[index]:'几个橘子？'}}
         </picker>
       </view>
