@@ -89,10 +89,10 @@ Page({
   },
   turnToTeamSetting(){
 
-   // var data = JSON.stringify(this.data.team._id);
-    console.log(data);
+    //var data = JSON.stringify(this.data.team._id);
+    console.log(this.data.team);
     wx.navigateTo({
-      url: "/pages/habit/modifyTeam/modifyTeam?team="+this.data.team._id
+      url: "/pages/habit/modifyTeam/modifyTeam?teamID="+this.data.team._id
     })
   },
   /**
@@ -128,7 +128,7 @@ Page({
         if (teamID != null) {
           teamID = res.data[0].teamID;
           console.log(teamID);
-          db.collection('test').doc(teamID).get({
+          db.collection('team').doc(teamID).get({
             success: (e) => {
               console.log(e.data);
               this.setData({
