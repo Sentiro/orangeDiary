@@ -6,6 +6,7 @@
     "pages/habit/createHabit/createHabit",
     "pages/myInfo/setUp/setUp",
     "pages/posts/posts",
+    "pages/posts/newPost/newPost",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",

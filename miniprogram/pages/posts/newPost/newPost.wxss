@@ -1,0 +1,65 @@
+/* miniprogram/pages/habit/newHabits/newHabits.wxss */
+.question-title{
+  /*边界*/
+  border-radius: 20px;
+  margin: 10px 10px 3px 6px;
+  width: 300px;
+  height: 3rem;
+  min-height: 2rem;
+  font-size:20px
+}
+
+.calendar {
+  padding-top: 10px;       /*上内边距为 10px*/
+  border-radius: 15px;     /*添加边框圆角*/
+}
+
+.add{
+  width: 250rpx;
+  height: 250rpx;
+  margin-top: 20rpx;
+  background-color: white;
+  border-radius: 0rpx;
+  font-size: 50rpx;
+}
+
+.preserve-diary{
+  background-color: #f8b400;
+  border-radius: 400px; 
+}
+
+.addsuspend {
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;  
+    border-radius: 500px;
+    z-index:999; 
+}
+
+.deletesuspend {
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;  
+    border-radius: 500px;
+    z-index:999; 
+}
+
+.submit {
+    float: right;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;  
+    border-radius: 500px;
+    z-index:999; 
+}
+
+.swiper{
+   height: 180px;
+}
+
+.image{
+  max-width:100%;
+  display: inline-block;
+}
