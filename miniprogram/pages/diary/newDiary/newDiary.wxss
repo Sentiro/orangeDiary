@@ -12,7 +12,7 @@
 
   /*边界*/
   border-radius: 20px;
- // margin: 10px 10px 3px 6px;
+  margin: 10px 10px 3px 6px;
   width: 300px;
   height: 2rem;
   min-height: 2rem;

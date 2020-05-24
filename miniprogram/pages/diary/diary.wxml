@@ -1,8 +1,6 @@
 <!--miniprogram/pages/habit/habit.wxml-->
 <!--悬浮按钮-->
-<view class="post padding-sm radius shadow shadow-blur bg-yellow" bindtap="onPostClick">
-  <iconfont name="list" size="40"/>
-</view>
+
 
 
 <view class="cu-card article {{isCard?'no-card':''}}" bindtap="showContent">
@@ -27,5 +25,9 @@
       </view>
     </view>
   </view>
+  <view class="post padding-sm radius shadow shadow-blur bg-yellow" bindtap="onPostClick">
+  <iconfont name="list" size="40"/>
+</view>
+
 </view>
 

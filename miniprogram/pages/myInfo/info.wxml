@@ -62,7 +62,7 @@
     <text class="text-grey">开启通知</text>
   </view>
   <view class="action">
-    <text class="text-df margin-right-sm"></text>
+    <text class="text margin-right-sm"></text>
     <switch class="sm" bindchange="SetShadow"></switch>
   </view>
    </view>
@@ -99,7 +99,7 @@
     </view>
   </view>
 
-  <view class="text-center padding-xl ">
+  <view class="padding-xl text-center">
     <button formType="submit" class="cu-btn bg-yellow round">
       <text class="text-lg">登出</text>
     </button>
@@ -108,14 +108,4 @@
 
 
 
-  <!-- <view class="user_info_wrap" hover-stop-propagation="false">
-    <view class="user_img_wrap" hover-class="none" hover-stop-propagation="false">
-        <image class="user_bg" src="{{userInfo.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">       
-        </image>
-        <view class="user_info">
-        <image class="user_icon" src="{{userInfo.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
-        </image>   
-        <view class="user_name"></view>  
-        </view>
-    </view>
-</view> -->
+  

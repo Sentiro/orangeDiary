@@ -1,12 +1,15 @@
 {
   "pages": [
-    "pages/diary/newDiary/newDiary",
+    "pages/posts/posts",
     "pages/myInfo/info",
+    "pages/myInfo/setUp/feedback/feedback",
+   
+    "pages/diary/newDiary/newDiary",
+    "pages/myInfo/setUp/help/help",
     "pages/habit/modifyTeam/modifyTeam",
     "pages/habit/habit",
     "pages/habit/createHabit/createHabit",
-    "pages/myInfo/setUp/setUp",
-    "pages/posts/posts",
+    
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -25,10 +28,10 @@
     "pages/habit/myHabits/myHabits",
     "pages/habit/team/team",
     "pages/habit/newHabits/newHabits",
-    "pages/myInfo/setUp/help/help",
+    
     "pages/myInfo/setUp/thanks/thanks",
     "pages/myInfo/setUp/about/about",
-    "pages/myInfo/setUp/feedback/feedback",
+    
     "pages/habit/members/members",
     "pages/habit/modifyTeam/editTag",
     "pages/habit/members/QRcode"
