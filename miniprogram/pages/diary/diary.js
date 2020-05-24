@@ -3,16 +3,7 @@ var util = require('../../utils.js');
 
 Page({
   data: { 
-    
-  },
-  onLoad: function(options) {
-    
-   
-    if (app.globalData.openid) {
-      this.setData({
-        openid: app.globalData.openid
-      })
-    }
+    ne:[],
   },
 
   onPostClick(e){
@@ -21,36 +12,14 @@ Page({
     })
   },
   showContent(e){
+    var data = JSON.stringify(e.currentTarget.dataset.key);
+    console.log(e.currentTarget.dataset.key);
     wx.navigateTo({
-      url: "/pages/diary/myDiary/myDiary"
+      url: '/pages/diary/myDiary/myDiary?item='+data
     })
   },
 
  
-
-
-
-  /**
-   * 页面的初始数据
-   */
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var time=new Date();
-    //var time = util.formatTime(new Date());
-   /* var timestamp = Date.parse(new Date());
-    var date = new Date(timestamp);*/
-    // 再通过setData更改Page()里面的data，动态更新页面的数据
-    this.setData({
-      date: time.getFullYear()+"年"+(time.getMonth()+1)+"月"+time.getDate()+"日",
-    });
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
 
   },
@@ -69,18 +38,44 @@ Page({
 
   },
 
+  onLoad: function(options) {
+    console.log('zailimian')
+    var appInstance = getApp();
+    var userID = appInstance.globalData.openid;
+    //console.log('成功');
+    console.log(userID);
+    const db = wx.cloud.database();
+    db.collection('diary').where({
+      _openid:userID
+    }).get({
+      success: res => {
+        //给ne赋值，方便页面加载。
+        this.setData({
+          ne: res.data.reverse()
+        })
+      },
+      fail: res=>{
+        wx.showToast({
+          title: "上传失败",
+        })
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setDate({
+      ne:[]
+    })
+    this.onLoad()
   },
 
   /**

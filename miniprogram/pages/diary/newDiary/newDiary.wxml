@@ -1,28 +1,28 @@
 <!--miniprogram/pages/habit/newHabits/newHabits.wxml-->
 <view wx:if="{{imgs.length==0}}">
-  <view class="page-section page-section-spacing swiper">
+  <view class="">
     <swiper class="swiper">
-    <swiper-item class="text-center">
-    <view class="margin-xl">
-    <view class="padding-left-xl padding-right-xl padding-top-xl flex justify-center">
-        <iconfont class="margin-top-xl" bindtap="chooseImg" name="add_img" size="50" />
-      </view>
-      <text class="margin-top-sm">添加图片</text>
-    </view>
-      
+      <swiper-item class="text-center">
+        <view class="margin-xl">
+          <view class="padding-left-xl padding-right-xl padding-top-xl flex justify-center">
+            <iconfont class="margin-top-xl" bindtap="chooseImg" name="add_img" size="50" />
+          </view>
+          <text class="margin-top-sm">添加图片</text>
+        </view>
+
       </swiper-item>
     </swiper>
   </view>
 </view>
 <view wx:if="{{imgs.length>0}}">
-  <view class="page-section page-section-spacing swiper">
+  <view class="">
     <swiper class="swiper" indicator-dots="true">
       <block wx:for="{{imgs}}" wx:key="*this">
         <swiper-item>
-          <image class="bg-mask" src='{{item}}' mode='aspectFill'></image>
-          
-          <view class=" text-xl">          
-          <text class="cuIcon-move deletesuspend bg-gray " bindtap="deletImg"></text>
+          <image class="bg-mask" src='{{item}}' mode='widthFix'></image>
+
+          <view class=" text-xl">
+            <text class="cuIcon-move deletesuspend bg-gray " bindtap="deleteImg"></text>
             <text class="cuIcon-add addsuspend bg-gray" bindtap="chooseImg"></text>
           </view>
 
@@ -61,6 +61,7 @@
   </view>
 </view>
 
+<!-- 保存日记 -->
 <view class="padding">
   <button class="submit cu-btn round line-yellow shadow" bindtap="preserveDiary">保存</button>
 </view>

@@ -10,7 +10,7 @@
   </view>
   <view class="flex justify-end margin-lg">
     <view class="cu-avatar round margin-center xl" style="">
-    <open-data type="userAvatarUrl" default-avatar="user-unlogin.png" style="border-radius:50%;overflow:hidden;display:block;height:17vw;width:17vw"></open-data>
+      <open-data type="userAvatarUrl" default-avatar="user-unlogin.png" style="border-radius:50%;overflow:hidden;display:block;height:17vw;width:17vw"></open-data>
     </view>
   </view>
 </view>
@@ -25,12 +25,12 @@
   </view>
 </view>
 <view class="cu-list menu card-menu margin-top bg-white padding">
-<text class="cuIcon-circle"></text>更多功能
+  <text class="cuIcon-circle"></text>更多功能
   <view class="grid col-4 ">
     <view class="padding-sm" bindtap="onAddClick">
       <view class="padding-sm radius text-center shadow-blur">
         <iconfont name="xiewenzhang" size="25"></iconfont>
-        
+
       </view>
       <view class="text">性格测试</view>
     </view>
@@ -42,68 +42,68 @@
     </view>
     <view class="padding-sm" bindtap="onAddClick">
       <view class="padding-sm radius  shadow-blur">
-        <iconfont name="A1" size="25"></iconfont>      
-        </view>
-        <view class="text"> 情绪管理</view>
+        <iconfont name="A1" size="25"></iconfont>
       </view>
-      <view class="padding-sm" bindtap="onMyLoveClick">
-        <view class="padding-sm radius text-center shadow-blur">
-          <iconfont name="xin" size="25"></iconfont>         
-        </view>
-        <view class="text">我的收藏</view>
+      <view class="text"> 情绪管理</view>
+    </view>
+    <view class="padding-sm" bindtap="onMyLoveClick">
+      <view class="padding-sm radius text-center shadow-blur">
+        <iconfont name="xin" size="25"></iconfont>
       </view>
+      <view class="text">我的收藏</view>
     </view>
   </view>
+</view>
 
-<view class="padding bg-white margin-top card-menu cu-list menu">
-  <view class="cu-bar margin-top bg-white">
-  <view class="action">
-    <text class="cuIcon-notice text-gray"></text>
-    <text class="text-grey">开启通知</text>
-  </view>
-  <view class="action">
-    <text class="text margin-right-sm"></text>
-    <switch class="sm" bindchange="SetShadow"></switch>
-  </view>
-   </view>
-
-    <view class="cu-item arrow" bindtouchend="handleHistory">
-      <view class="content">
-        <text class="cuIcon-circlefill text-grey"></text>
-        <text class="text-grey">历史记录</text>
-      </view>
+<view class=" bg-white margin-top card-menu cu-list menu">
+  
+<view class="cu-item margin-top bg-white">
+    <view class="content">
+      <text class="cuIcon-notice text-gray"></text>
+      <text class="text-grey">开启通知</text>
     </view>
-    <view class="cu-item arrow" bindtouchend="goToHelp">
-      <view class="content">
-        <image src="help.png" class="png" mode="aspectFit"></image>
-        <text class="text-grey">帮助</text>
-      </view>
+    <view class="action">
+      <text class="text-df margin-right-sm"></text>
+      <switch class="sm" bindchange="SetShadow"></switch>
     </view>
+  </view>
+  <view class="cu-item arrow" bindtouchend="handleHistory">
+    <view class="content">
+      <text class="cuIcon-circlefill text-grey"></text>
+      <text class="text-grey">历史记录</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtouchend="goToHelp">
+    <view class="content">
+      <image src="help.png" class="png" mode="aspectFit"></image>
+      <text class="text-grey">帮助</text>
+    </view>
+  </view>
   <view class="cu-item arrow" bindtouchend="goToFeedback">
-      <view class="content">
-        <image src="feedback.png" class="png" mode="aspectFit"></image>
-        <text class="text-grey">反馈</text>
-      </view>
+    <view class="content">
+      <image src="feedback.png" class="png" mode="aspectFit"></image>
+      <text class="text-grey">反馈</text>
     </view>
+  </view>
   <view class="cu-item arrow" bindtouchend="goToAbout">
-      <view class="content">
-        <image src="about.png" class="png" mode="aspectFit"></image>
-        <text class="text-grey">关于</text>
-      </view>
+    <view class="content">
+      <image src="about.png" class="png" mode="aspectFit"></image>
+      <text class="text-grey">关于</text>
     </view>
+  </view>
   <view class="cu-item arrow" bindtouchend="goToThanks">
-      <view class="content">
-        <image src="ganxie.png" class="png" mode="aspectFit"></image>
-        <text class="text-grey">鸣谢</text>
-      </view>
+    <view class="content">
+      <image src="ganxie.png" class="png" mode="aspectFit"></image>
+      <text class="text-grey">鸣谢</text>
     </view>
   </view>
+</view>
 
-  <view class="padding-xl text-center">
-    <button formType="submit" class="cu-btn bg-yellow round">
-      <text class="text-lg">登出</text>
-    </button>
-  </view>
+<view class="text-center padding-xl ">
+  <button formType="submit" class="cu-btn bg-yellow round">
+    <text class="text-lg">登出</text>
+  </button>
+</view>
 
 
 

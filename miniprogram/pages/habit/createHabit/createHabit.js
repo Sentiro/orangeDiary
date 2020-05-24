@@ -321,16 +321,6 @@ Page({
     })
     //console.log('form发生了submit事件，携带数据为：', e.detail.value)
     const db = wx.cloud.database();
-    /*var openid = getApp().globalData.openid;
-    var habits=db.collection('test').where({
-      _openid: openid,
-    }).get();
-    
-    /*habits.habitList.push({
-      name: e.detail.habitName,
-      times: e.detail.times,
-      time: e.detail.time,
-    })*/
     db.collection('habit').add({
        // data 字段表示需新增的 JSON 数据
        data: {
@@ -345,13 +335,26 @@ Page({
          // 为待办事项添加一个地理位置（113°E，23°N）
          done: false
        },
-       success: function (res) {
+       success: function (res) {  
+         //显示成功信息
          wx.showToast({
            title: '成功',
            icon: 'success',
-           duration: 2000
-         })
-         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id        
+           duration: 2000,
+           success:function(e){
+             //显示成功信息成功后跳转页面
+             wx.switchTab({
+               url: '/pages/habit/habit',
+               success: function (e) {
+                 var page = getCurrentPages().pop();
+                 console.log(page);
+                 //if (page == undefined || page == null) return;
+                 page.onLoad();
+               }
+             })
+           }
+         })  
+        
        }
      })
   },

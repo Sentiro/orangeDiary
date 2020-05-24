@@ -4,7 +4,7 @@ const app = getApp();
 Page({
   data: {
     CustomBar: null,
-    leader: true,
+    leader: false,
     hasTeam: true,
     TabCur: '0',
     scrollLeft: 0,
@@ -88,8 +88,11 @@ Page({
     })
   },
   turnToTeamSetting(){
+
+    //var data = JSON.stringify(this.data.team._id);
+    console.log(this.data.team);
     wx.navigateTo({
-      url: "/pages/habit/modifyTeam/modifyTeam"
+      url: "/pages/habit/modifyTeam/modifyTeam?teamID="+this.data.team._id
     })
   },
   /**
@@ -103,7 +106,7 @@ Page({
     var time = new Date();
     var appInstance = getApp();
     var userID = appInstance.globalData.openid;
-    
+    //获取习惯
     const db = wx.cloud.database();
     db.collection('habit').where({
       _openid: userID,
@@ -116,23 +119,32 @@ Page({
         console.log(habitList);
       }
     });
-    db.collection('test').where({
-      teamID: userID,
+    //获取队伍
+    var teamID = 0;
+    db.collection('user').where({
+      _openid: userID,
     }).get({
       success: (res) => {
-        console.log(res.data);
-        this.setData({
-         // habitList: res.data
-        });
-        console.log(habitList);
+        if (teamID != null) {
+          teamID = res.data[0].teamID;
+          console.log(teamID);
+          db.collection('team').doc(teamID).get({
+            success: (e) => {
+              console.log(e.data);
+              this.setData({
+                team: e.data
+              });
+              if (userID == e.data._openid) {
+                this.setData({
+                  leader: true
+                })
+              }
+            }
+          })
+        }
       }
     });
-
-    //var time = util.formatTime(new Date());
-    /* var timestamp = Date.parse(new Date());
-     var date = new Date(timestamp);*/
-    // 再通过setData更改Page()里面的data，动态更新页面的数据
-
+    
     this.setData({
       date: time.getFullYear() + "年" + (time.getMonth() + 1) + "月" + time.getDate() + "日",
     });

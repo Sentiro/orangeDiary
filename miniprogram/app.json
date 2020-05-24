@@ -1,10 +1,9 @@
 {
   "pages": [
-    "pages/posts/posts",
+
     "pages/myInfo/info",
+    "pages/posts/posts",
     "pages/myInfo/setUp/feedback/feedback",
-   
-    "pages/diary/newDiary/newDiary",
     "pages/myInfo/setUp/help/help",
     "pages/habit/modifyTeam/modifyTeam",
     "pages/habit/habit",
@@ -25,6 +24,7 @@
     "pages/im/room/room",
     "pages/diary/diary",
     "pages/diary/myDiary/myDiary",
+    "pages/diary/newDiary/newDiary",
     "pages/habit/myHabits/myHabits",
     "pages/habit/team/team",
     "pages/habit/newHabits/newHabits",

@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    date:'',
+    text:'',
+    title:'',
+    imgs:[]
   },
 
     
@@ -19,7 +22,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var queryBean = JSON.parse(options.item);
+    this.setData({
+      text:queryBean.text,
+      title:queryBean.title,
+      date:queryBean.date +' '+queryBean.time,
+      imgs:queryBean.imgs
+    })
   },
 
   /**

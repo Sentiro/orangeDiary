@@ -1,15 +1,15 @@
 // miniprogram/pages/habit/newHabits/newHabits.js
 var util = require('../../../utils.js');
 var plugin = requirePlugin("chatbot");
+var app=getApp();
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     imgs: [],
-    titleCount: 0, //标题字数
-    contentCount: 0, //正文字数
+    imgsID: [],
+    flag: false,
     date: null,
     calendarHide:true,
     year:0,
@@ -87,19 +87,7 @@ Page({
       imgs: imgs
     });
   },
-  // 预览图片
-  previewImg: function (e) {
-    //获取当前图片的下标
-    var index = e.currentTarget.dataset.index;
-    //所有图片
-    var imgs = this.data.imgs;
-    wx.previewImage({
-      //当前显示图片
-      current: imgs[index],
-      //所有图片
-      urls: imgs
-    })
-  },
+
   handleTitleInput: function (e) {
     var that = this;
     that.setData({
@@ -112,33 +100,109 @@ Page({
       text: e.detail.value
     })
   },
-   //添加日记记录
-  preserveDiary: function () {
-    var article=this.data.text;
-    const db = wx.cloud.database()
-    var that = this;
-    //情感分析
-    plugin.api.nlp('sentiment', { q: article, mode: '3class' }).then(res => {
-      console.log("sentiment result : ", res)
-      console.log((res.result[0][1] - res.result[2][1]) * 100 / (res.result[0][1] + res.result[2][1]));
-    });   
-    db.collection('diary').add({
-      // data 字段表示需新增的 JSON 数据
-      data: {
-        // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
-        title: that.data.title,
-        text: that.data.text,
-        date: new Date()
-      },
-      success: function(res) {
-        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-        console.log(res)
-      }
+
+  //标题为空
+  fail: function (e){
+    wx.showToast({
+      title: '标题为空', 
+      icon: 'success',
+      duration: 1500 
     })
   },
-  submit(){
-   
+  //正文为空
+  fail2: function (e){
+    wx.showToast({
+      title: '正文为空', 
+      icon: 'success', 
+      duration: 1500 
+    })
   },
+
+
+   //添加日记记录
+  preserveDiary: function (){
+    var article=this.data.text;
+    const db = wx.cloud.database()
+    if(this.data.title===''){
+      wx.showToast({
+        title: '标题为空', 
+        icon: 'close',
+        duration: 1500 
+      })
+    }
+    else if(this.data.text===''){
+      wx.showToast({
+        title: '正文为空', 
+        icon: 'close', 
+        duration: 1500 
+      })
+    }
+    else{
+      //情感分析
+      plugin.api.nlp('sentiment', { q: article, mode: '3class' }).then(res => {
+        console.log("sentiment result : ", res)
+        console.log((res.result[0][1] - res.result[2][1]) * 100 / (res.result[0][1] + res.result[2][1]));
+      });   
+      var that = this;
+      var imgs = that.data.imgs;
+      var imgsID = that.data.imgsID;
+      wx.showLoading({
+        title: '加载中...',
+      })
+      let promiseArr = [];
+      //获取openid
+      var appInstance = getApp();
+      var userID = appInstance.globalData.openid;
+      for (var i = 0; i < imgs.length; i++){
+        promiseArr.push(new Promise((reslove, reject) => {
+          wx.cloud.uploadFile({
+            cloudPath: userID+'/'+this.data.title+'/'+i,
+            // 指定要上传的文件的小程序临时文件路径
+            filePath: imgs[i],
+            // 成功回调
+            success: res => {
+              // 暂时储存 ID
+              imgsID.push(res.fileID)
+              reslove();
+            },
+            fail: res=>{
+              wx.showToast({
+                title: "上传失败",
+              })
+            }
+          })
+        }));
+      }
+      Promise.all(promiseArr).then(res => {
+        console.log('chenggongle')
+        //上传日记至数据库
+        var time = new Date();
+        db.collection('diary').add({
+          // data 字段表示需新增的 JSON 数据
+          data: {
+            // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
+            title: this.data.title,
+            text: this.data.text,
+            date: time.getFullYear() + "-" + (time.getMonth() + 1)+ "-" +time.getDate(),
+            time: time.getHours()+":"+time.getMinutes(),
+            imgs :this.data.imgsID,
+          },
+        })
+        console.log('chenggongle')
+        wx.hideLoading()
+        wx.switchTab({ 
+          url: '/pages/diary/diary',
+          success: function (e) {
+            var page = getCurrentPages().pop();
+            console.log(page);
+            //if (page == undefined || page == null) return;
+            page.onLoad();
+          }       
+        })
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
