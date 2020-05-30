@@ -9,15 +9,21 @@ Page({
     TabCur: '0',
     scrollLeft: 0,
     date: null,
+    now: null,
     calendarHide: true,
-    year: 0,
-    month: 0,
     clickDate: null,
+    //now: new Date(),
     dayStyle: [{
         month: 'current',
         day: new Date().getDate(),
         color: 'white',
-      background: '#f8b600'
+        background: '#f8b600'
+      },
+      {
+        month: 'current',
+        day: new Date().getDate(),
+        color: 'white',
+        background: '#f8b600'
       }
     ],
     habitList: [],
@@ -53,34 +59,74 @@ Page({
       url: url,
     })*/
   },
+
+/*
+   日历的操作
+*/
   dayClick: function(event) {
-    var days_style = new Array;
     var year = event.detail.year;
     var month = event.detail.month;
     var day = event.detail.day;
     this.setData({
       date: year + "年" + month + "月" + day + "日",
-      clickDate: this.data.date
+      clickDate: {
+        year:event.detail.year,
+        month:event.detail.month,
+        day:event.detail.day,
+      }
     })
-    days_style.push({
-      month: 'current',
-      day: new Date().getDate(),
-      color: 'white',
-      background: '#f8b600'
-    }, {
-      month: 'current',
-      day: day,
-      color: 'white',
-        background: '#f8b6005b'
-    }, )
     this.setData({
-      dayStyle: days_style
+      'dayStyle[0].month': 'current',
+      'dayStyle[0].day':event.detail.day,
+      'dayStyle[0].color':'white',
+      'dayStyle[0].background':'#f8b6005b',
     })
   },
   showCalendar(e) {
     this.setData({
       calendarHide: !this.data.calendarHide
     })
+  },
+  prev: function (event) {
+    this.setData({
+      dayStyle:[]
+    })
+    var month=event.detail.currentMonth;
+    var cur=this.data.now;
+    //清空datstyle
+   
+    //如果是当前月
+    if(month==cur.month){
+      this.setData({
+        dayStyle: [{
+          month: 'current',
+          day: cur.day,
+          color: 'white',
+          background: '#f8b600'
+        },
+        {
+          month: 'current',
+          day: cur.day,
+          color: 'white',
+          background: '#f8b600'
+        }]
+      });
+      
+    }
+    if(this.data.clickDate!=null){
+      if(month==this.data.clickDate.month){
+        this.setData({
+          'dayStyle[0].month': 'current',
+          'dayStyle[0].day':this.data.clickDate.day,
+          'dayStyle[0].color':'white',
+          'dayStyle[0].background':'#f8b6005b',
+        })
+      }
+    }
+   
+  },
+  next: function (event) {
+    console.log(event.detail);
   },
   onPostClick(e) {
     wx.navigateTo({
@@ -106,6 +152,13 @@ Page({
     var time = new Date();
     var appInstance = getApp();
     var userID = appInstance.globalData.openid;
+    this.setData({
+      now:{
+        year:time.getFullYear(),
+        month:time.getMonth()+1,
+        day:time.getDate(), 
+      }
+    });
     //获取习惯
     const db = wx.cloud.database();
     db.collection('habit').where({
@@ -131,6 +184,7 @@ Page({
           db.collection('team').doc(teamID).get({
             success: (e) => {
               console.log(e.data);
+              console.log(userID == e.data._openid);
               this.setData({
                 team: e.data
               });
@@ -195,7 +249,15 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
-  }
+  onShareAppMessage: function(res) {
+    let title, imageUrl;
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      title = '加入组队打卡'
+      // imageUrl = '***.png';
+    }
+    return { 
+      path: '/pages/habit/team?teamID='+this.data.team._id,
+    }
+  },
 })
