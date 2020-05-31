@@ -1,1 +1,15 @@
 /* miniprogram/pages/posts/posts.wxss */
+.post {
+  float: right;
+  background-color: #f8b400;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  border: 2 solid #f8b400;
+  border-radius: 500px;
+  z-index: 999;
+}
+
+
+
+

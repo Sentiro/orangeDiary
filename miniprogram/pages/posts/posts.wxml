@@ -3,54 +3,46 @@
   <iconfont name="list" size="40"/>
 </view>
 
-<view class="padding">
+<view class="padding bg-white card-menu cu-list menu" wx:for='{{postList}}' wx:key='index'>
+<view>
 <view class="cu-item shadow">
     <view class="cu-list menu-avatar">
       <view class="cu-item">
-        <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
+        <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
         <view class="content flex-sub">
-          <view>凯尔</view>
-          <view class="text-gray text-sm flex justify-between">
-            2019年12月3日
+          <view>{{item.nickName}}</view>
+          <view class="text-gray text-sm flex justify-between" space="nbsp">
+            {{item.date}} {{item.time}}
           </view>
         </view>
       </view>
     </view>
-     <view class="text-content">
-      折磨生出苦难，苦难又会加剧折磨，凡间这无穷的循环，将有我来终结！
+    <view class="cu-item" wx:if="{{id!=index}}" bindtap="onTextTouched" data-index='{{index}}'>
+    <view class="text-content bg-white" >
+      <wxs src="./posts.wxs" module="intercept"/>
+      <view>{{intercept.substr(item.text)}}</view>
     </view>
-    <view class="grid flex-sub padding-lr {{isCard?'col-3 grid-square':'col-1'}}">
-      <view class="bg-img {{isCard?'':'only-img'}}" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);" wx:for="{{isCard?9:1}}" wx:key="index">
+    </view>
+     <view class="cu-item" wx:if="{{id==index}}">
+      <view class="text-content bg-white">
+      <view>{{item.text}}</view>
+    </view>
+    </view>
+    <view class="grid flex-sub padding-lr col-3 grid-square">
+      <view class="bg-img" style="background-image:url({{img}});" wx:for="{{item.imgs}}" wx:key="index" wx:for-item="img">
       </view>
     </view>
-    <view class="text-gray text-sm text-right padding">
-      <text class="cuIcon-attentionfill margin-lr-xs"></text> 10
-      <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
-      <text class="cuIcon-messagefill margin-lr-xs"></text> 30
+    <view class="content text-gray text-right" bindtap='thumbsup' data-id='{{item._id}}'>
+    <block wx:if="{{item.state==true}}">
+    <image  src='like.png' class="png" style="width:50rpx;height:50rpx"></image>{{item.likeNum}}
+    </block> 
+      <block wx:if="{{item.state==false}}">
+      <image src='unlike.png' class="png" style="width:40rpx;height:40rpx;"></image>{{item.likeNum}}
+      </block>
     </view>
-    <view class="cu-list menu-avatar comment solids-top">
-      <view class="cu-item">
-        <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
-        <view class="content">
-          <view class="text-grey">莫甘娜</view>
-          <view class="text-gray text-content text-df">
-            凯尔，你被自己的光芒变的盲目。
-          </view>
-          <view class="bg-grey padding-sm radius margin-top-sm  text-sm">
-            <view class="flex">
-              <view>凯尔：</view>
-              <view class="flex-sub">妹妹，你在帮他们给黑暗找借口吗?</view>
-            </view>
-          </view>
-          <view class="margin-top-sm flex justify-between">
-            <view class="text-gray text-df">2018年12月4日</view>
-            <view>
-              <text class="cuIcon-appreciatefill text-red"></text>
-              <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
-            </view>
-          </view>
-        </view>
-      </view>
+   </view>
+  </view>
 </view>
-</view>
-</view>
+
+
+    
