@@ -24,7 +24,7 @@
               <text class="cuIcon-likefill"></text>
             </view>
             <view class="cu-tag line-red sm">
-              23
+              {{item.emotion}}
             </view>
           </view>
         </view>

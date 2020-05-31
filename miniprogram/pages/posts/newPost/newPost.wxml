@@ -1,0 +1,62 @@
+<!--pages/posts/newPost/newPost.wxml-->
+<!--miniprogram/pages/habit/newHabits/newHabits.wxml-->
+<view wx:if="{{imgs.length==0}}">
+  <view class="">
+    <swiper class="swiper">
+      <swiper-item class="text-center">
+        <view class="margin-xl">
+          <view class="padding-left-xl padding-right-xl padding-top-xl flex justify-center">
+            <iconfont class="margin-top-xl" bindtap="chooseImg" name="add_img" size="50" />
+          </view>
+          <text class="margin-top-sm">添加图片</text>
+        </view>
+
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+<view wx:if="{{imgs.length>0}}">
+  <view class="">
+    <swiper class="swiper" indicator-dots="true">
+      <block wx:for="{{imgs}}" wx:key="*this">
+        <swiper-item>
+          <image class="bg-mask" src='{{item}}' mode='widthFix'></image>
+
+          <view class=" text-xl">
+            <text class="cuIcon-move deletesuspend bg-gray " bindtap="deleteImg"></text>
+            <text class="cuIcon-add addsuspend bg-gray" bindtap="chooseImg"></text>
+          </view>
+
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+</view>
+
+
+
+<view class="cu-bar bg-white">
+  <view class="action sub-title">
+    <text class="text-xl text-bold text-grey">{{date}}</text>
+    <text class="bg-grey"></text>
+    <!-- last-child选择器-->
+  </view>
+</view>
+<view hidden="{{calendarHide}}">
+  <calendar calendar-style="calendar" />
+</view>
+
+
+<view class="">
+  <!-- 问题正文区域  -->
+  <view class="padding">
+    <!-- 多行输入框 -->
+    <textarea class="text-gray" placeholder="请输入内容" bindinput="handleContentInput" maxlength="-1" auto-height="true" />
+  </view>
+</view>
+
+<!-- 保存日记 -->
+<view class="padding">
+  <button class="submit cu-btn round line-yellow shadow" bindtap="preserveDiary">保存</button>
+</view>

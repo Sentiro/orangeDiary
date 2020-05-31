@@ -90,7 +90,7 @@ Page({
     var teamID = options.teamID;
     if (teamID != null) {
       const db = wx.cloud.database();
-      db.collection('test').doc(teamID).get({
+      db.collection('team').doc(teamID).get({
         success: (e) => {
           console.log(e.data);
           this.setData({
@@ -178,7 +178,7 @@ Page({
     if(this.data.teamID==null){
       this.setData({
         teamID: util.wxuuid(),
-      }   )
+      })
     }
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     const db = wx.cloud.database();

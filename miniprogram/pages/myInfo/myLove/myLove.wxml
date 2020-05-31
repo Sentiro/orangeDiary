@@ -1,2 +1,41 @@
 <!--miniprogram/pages/myInfo/myLove/myLove.wxml-->
-<text>miniprogram/pages/myInfo/myLove/myLove.wxml</text>
+<!-- <view class="padding bg-white card-menu cu-list menu" wx:for='{{postList}}' wx:key='index'>
+<view>
+<view class="cu-item shadow">
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
+        <view class="content flex-sub">
+          <view>{{item.nickName}}</view>
+          <view class="text-gray text-sm flex justify-between" space="nbsp">
+            {{item.date}} {{item.time}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="cu-item" wx:if="{{id!=index}}" bindtap="onTextTouched" data-index='{{index}}'>
+    <view class="text-content bg-white" >
+      <wxs src="./posts.wxs" module="intercept"/>
+      <view>{{intercept.substr(item.text)}}</view>
+    </view>
+    </view>
+     <view class="cu-item" wx:if="{{id==index}}">
+      <view class="text-content bg-white">
+      <view>{{item.text}}</view>
+    </view>
+    </view>
+    <view class="grid flex-sub padding-lr col-3 grid-square">
+      <view class="bg-img" style="background-image:url({{img}});" wx:for="{{item.imgs}}" wx:key="index" wx:for-item="img">
+      </view>
+    </view>
+    <view class="content text-gray text-right" bindtap='thumbsup' data-id='{{item._id}}'>
+    <block wx:if="{{item.state==true}}">
+    <image  src='like.png' class="png" style="width:50rpx;height:50rpx"></image>{{item.likeNum}}
+    </block> 
+      <block wx:if="{{item.state==false}}">
+      <image src='unlike.png' class="png" style="width:40rpx;height:40rpx;"></image>{{item.likeNum}}
+      </block>
+    </view>
+   </view>
+  </view>
+</view> -->

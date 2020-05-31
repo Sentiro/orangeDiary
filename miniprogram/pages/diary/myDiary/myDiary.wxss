@@ -1,1 +1,3 @@
-/* miniprogram/pages/habit/newHabits/newHabits.wxss */
+.swiper{
+  height: 180px;
+}

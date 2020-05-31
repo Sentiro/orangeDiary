@@ -33,7 +33,7 @@
     </view>
     <!--日历-->
     <view hidden="{{calendarHide}}">
-      <calendar calendar-style="calendar" header-style="header" binddayClick="dayClick" days-color="{{dayStyle}}" />
+      <calendar calendar-style="calendar" bindprevMonth="prev" header-style="header" binddayClick="dayClick" bindnextMonth="prev" days-color="{{dayStyle}}" />
       <view class=" margin-top"></view>
     </view>
     <!--正在进行的习惯-->

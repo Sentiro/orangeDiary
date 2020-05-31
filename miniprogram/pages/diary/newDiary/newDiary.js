@@ -9,7 +9,6 @@ Page({
   data: {
     imgs: [],
     imgsID: [],
-    flag: false,
     date: null,
     calendarHide:true,
     year:0,
@@ -19,22 +18,9 @@ Page({
       { month: 'current', day: new Date().getDate(), color: 'white', background: '#AAD4F5' }
     ],
     title: "",
-    text: ""
+    text: "",
+    emotion: null
   },
-
-  showCalendar: function (event) {
-    var year = event.detail.year;
-    var month = event.detail.month;
-    var day = event.detail.day;
-    this.setData({
-      date: year + "年" + month + "月" + day + "日",
-      clickDate: this.data.date
-    })
-    this.setData({
-      calendarHide: !this.data.calendarHide
-    }) 
-  },
-
 
   // 上传图片
   chooseImg: function (e) {
@@ -142,6 +128,9 @@ Page({
       plugin.api.nlp('sentiment', { q: article, mode: '3class' }).then(res => {
         console.log("sentiment result : ", res)
         console.log((res.result[0][1] - res.result[2][1]) * 100 / (res.result[0][1] + res.result[2][1]));
+        this.setData({
+          emotion: (res.result[0][1] - res.result[2][1]) * 100 / (res.result[0][1] + res.result[2][1])
+        })
       });   
       var that = this;
       var imgs = that.data.imgs;
@@ -186,6 +175,7 @@ Page({
             date: time.getFullYear() + "-" + (time.getMonth() + 1)+ "-" +time.getDate(),
             time: time.getHours()+":"+time.getMinutes(),
             imgs :this.data.imgsID,
+            emotion: this.data.emotion.toFixed(1)
           },
         })
         console.log('chenggongle')
@@ -211,7 +201,6 @@ Page({
     this.setData({
       date: time.getFullYear() + "年" + (time.getMonth() + 1) + "月" + time.getDate() + "日",
     });
-    const txt = "恭喜小张脱单成功";  
   },
 
   /**

@@ -21,8 +21,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"useCompilerModule": true
 	},
 	"appid": "wx7e1ea8c032211c74",
 	"projectname": "orange_dairy",

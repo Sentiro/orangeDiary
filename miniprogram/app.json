@@ -44,8 +44,8 @@
     }
   },
   "usingComponents": {
-    "iconfont": "../icon/iconfont/iconfont",
-    "cu-custom": "../colorui/components/cu-custom"
+    "cu-custom": "colorui/components/cu-custom",
+    "iconfont": "icon/iconfont/iconfont"
   },
   "window": {
     "backgroundColor": "#F6F6F6",
