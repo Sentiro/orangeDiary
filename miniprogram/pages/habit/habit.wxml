@@ -83,7 +83,7 @@
 
   <!--组队-->
   <view wx:if="{{TabCur==1}}">
-    <view wx:if="{{hasTeam}}">
+    <view wx:if="{{teamID!=''}}">
       <scroll-view scroll-y class="team">
         <view class="cu-bar bg-white">
           <view class="action">
@@ -144,7 +144,10 @@
         </view>
       </scroll-view>
     </view>
-    <view wx:if="{{!hasTeam}}">
+    <view wx:if="{{teamID==''}}">
+     <view>
+     暂无队伍 右上角分享组队吧
+     </view>
     </view>
   </view>
 </scroll-view>

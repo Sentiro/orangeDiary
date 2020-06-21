@@ -298,9 +298,9 @@ Page({
       // imageUrl = '***.png';
     }
     return {
-      title: title,
+      title: '加入队伍打卡吧',
       imageUrl: imageUrl,//这个是分享的图片
-      path: '/pages/habit/team?teamID=123456',
+      path: '/pages/habit/team?teamID='+this.data.teamID,
     }
   },
 

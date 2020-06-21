@@ -1,25 +1,23 @@
 // 云函数入口文件
-const cloud = require('wx-server-sdk')
+const cloud = require('wx-server-sdk');
 
-cloud.init()
+cloud.init();
 //调用数据库
-const db = cloud.database()
+const db = cloud.database();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var userID = wxContext.OPENID;
+  console.log('yunhanshuzhell!!!');
+  var userID = event._openid;
   var user=null;
-  await db.collection('user').where({
-    _openid: userID,
+  return await db.collection('user').where({
+    _id: userID,
   }).get({
     success: (res) => {
-      console.log(res.data);
-      user = res.data;
+      return res;
+    }, fail(res) { //存入数据库失败
+      console.log(res);
+      //云函数更新
     }
   });
-  return {
-    event,
-    openid: wxContext.OPENID,
-    user: user
-  }
 }

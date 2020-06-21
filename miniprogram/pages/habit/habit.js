@@ -8,7 +8,7 @@ Page({
     hasTeam: true,
     TabCur: '0',
     scrollLeft: 0,
-    date: null,
+    date: '',
     now: null,
     calendarHide: true,
     clickDate: null,
@@ -30,7 +30,7 @@ Page({
     teamName: '单词打卡小分队',
     tagColor: 'yellow',
     tagValue: '音乐',
-    teamID: '123488',
+    teamID: '',
     teamDetail: '塔里克是保护者星灵，用超乎寻常的力量守护着符文之地的生命',
     teamMember: [{
       openID: null,
@@ -38,7 +38,6 @@ Page({
       habitNum: 5,
       completeNum: 4,
       img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-
     }, {
       openID: null,
       name: "金针小肥猪",
@@ -60,26 +59,26 @@ Page({
     })*/
   },
 
-/*
-   日历的操作
-*/
-  dayClick: function(event) {
+  /*
+     日历的操作
+  */
+  dayClick: function (event) {
     var year = event.detail.year;
     var month = event.detail.month;
     var day = event.detail.day;
     this.setData({
       date: year + "年" + month + "月" + day + "日",
       clickDate: {
-        year:event.detail.year,
-        month:event.detail.month,
-        day:event.detail.day,
+        year: event.detail.year,
+        month: event.detail.month,
+        day: event.detail.day,
       }
     })
     this.setData({
       'dayStyle[0].month': 'current',
-      'dayStyle[0].day':event.detail.day,
-      'dayStyle[0].color':'white',
-      'dayStyle[0].background':'#f8b6005b',
+      'dayStyle[0].day': event.detail.day,
+      'dayStyle[0].color': 'white',
+      'dayStyle[0].background': '#f8b6005b',
     })
   },
   showCalendar(e) {
@@ -89,56 +88,57 @@ Page({
   },
   prev: function (event) {
     this.setData({
-      dayStyle:[]
+      dayStyle: []
     })
-    var month=event.detail.currentMonth;
-    var cur=this.data.now;
+    var month = event.detail.currentMonth;
+    var cur = this.data.now;
     //清空datstyle
-   
+
     //如果是当前月
-    if(month==cur.month){
+    if (month == cur.month) {
       this.setData({
         dayStyle: [{
-          month: 'current',
-          day: cur.day,
-          color: 'white',
-          background: '#f8b600'
-        },
-        {
-          month: 'current',
-          day: cur.day,
-          color: 'white',
-          background: '#f8b600'
-        }]
+            month: 'current',
+            day: cur.day,
+            color: 'white',
+            background: '#f8b600'
+          },
+          {
+            month: 'current',
+            day: cur.day,
+            color: 'white',
+            background: '#f8b600'
+          }
+        ]
       });
-      
+
     }
-    if(this.data.clickDate!=null){
-      if(month==this.data.clickDate.month){
+    if (this.data.clickDate != null) {
+      if (month == this.data.clickDate.month) {
         this.setData({
           'dayStyle[0].month': 'current',
-          'dayStyle[0].day':this.data.clickDate.day,
-          'dayStyle[0].color':'white',
-          'dayStyle[0].background':'#f8b6005b',
+          'dayStyle[0].day': this.data.clickDate.day,
+          'dayStyle[0].color': 'white',
+          'dayStyle[0].background': '#f8b6005b',
         })
       }
     }
-   
+
   },
   next: function (event) {
     console.log(event.detail);
   },
   onPostClick(e) {
     wx.navigateTo({
-      url: "/pages/habit/newHabits/newHabits"
+      url: "/pages/habit/createHabit/createHabit"
     })
   },
-  turnToTeamSetting(){
+  turnToTeamSetting() {
 
     //var data = JSON.stringify(this.data.team._id);
     console.log(this.data.team);
     wx.navigateTo({
-      url: "/pages/habit/modifyTeam/modifyTeam?teamID="+this.data.team._id
+      url: "/pages/habit/modifyTeam/modifyTeam?teamID=" + this.data.team._id
     })
   },
   /**
@@ -148,116 +148,140 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var time = new Date();
     var appInstance = getApp();
-    var userID = appInstance.globalData.openid;
+    var userID = '';
+    //确保在onlaunch之后
     this.setData({
-      now:{
-        year:time.getFullYear(),
-        month:time.getMonth()+1,
-        day:time.getDate(), 
-      }
+      now: {
+        year: time.getFullYear(),
+        month: time.getMonth() + 1,
+        day: time.getDate(),
+      },
+      date: time.getFullYear() + "年" + (time.getMonth() + 1) + "月" + time.getDate() + "日",
     });
     //获取习惯
+    if (appInstance.globalData.openid != '') {
+      userID = appInstance.globalData.openid;
+      console.log('[userID]'+userID);
+      this.getHabit(userID) 
+    } else {
+      appInstance.getopenidCallback = res => {
+        userID = appInstance.globalData.openid;
+        console.log('[userID]'+userID);
+        this.getHabit(userID) 
+      };
+    }
+   
+    //获取队伍
+    if (appInstance.globalData.user != '') {
+      this.setData({
+        teamID: appInstance.globalData.user.teamId,
+      })
+      this.getTeam(this.data.teamID, userID);
+    } else {
+      appInstance.userInfoCallback = res => {
+        this.setData({
+          teamID: appInstance.globalData.user.teamId,
+        })
+        console.log("[teamID]" + this.data.teamID);
+        this.getTeam(this.data.teamID, userID);
+      };
+    }
+  },
+  getHabit: function (userID) {
+
     const db = wx.cloud.database();
     db.collection('habit').where({
       _openid: userID,
     }).get({
       success: (res) => {
-        console.log(res.data);
+        // console.log(res.data);
         this.setData({
           habitList: res.data
         });
-        console.log(habitList);
       }
-    });
-    //获取队伍
-    var teamID = 0;
-    db.collection('user').where({
-      _openid: userID,
-    }).get({
-      success: (res) => {
-        if (teamID != null) {
-          teamID = res.data[0].teamID;
-          console.log(teamID);
-          db.collection('team').doc(teamID).get({
-            success: (e) => {
-              console.log(e.data);
-              console.log(userID == e.data._openid);
-              this.setData({
-                team: e.data
-              });
-              if (userID == e.data._openid) {
-                this.setData({
-                  leader: true
-                })
-              }
-            }
-          })
-        }
-      }
-    });
-    
-    this.setData({
-      date: time.getFullYear() + "年" + (time.getMonth() + 1) + "月" + time.getDate() + "日",
     });
   },
+  getTeam: function (teamID, userID) {
+   
+    const db = wx.cloud.database();
+    db.collection('team').doc(teamID).get({
+      success: (e) => {
+        console.log('[team]'+e.data);
+        console.log(userID == e.data._openid);
+        this.setData({
+          team: e.data
+        });
+        if (userID == e.data._openid) {
+          this.setData({
+            leader: true
+          })
+        }
+      },
+      fail: (e) => {
+        console.error('team查询调用失败', e)
+      }
+    })
+  },
+  habitFinish: function(){
 
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function (res) {
     let title, imageUrl;
     if (res.from === 'button') {
       // 来自页面内转发按钮
       title = '加入组队打卡'
       // imageUrl = '***.png';
     }
-    return { 
-      path: '/pages/habit/team?teamID='+this.data.team._id,
+    return {
+      path: '/pages/habit/team?teamID=' + this.data.team._id,
     }
   },
 })
