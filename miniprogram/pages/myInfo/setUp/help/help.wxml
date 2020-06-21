@@ -1,2 +1,130 @@
 <!--miniprogram/pages/myInfo/setUp/help/help.wxml-->
-<text>miniprogram/pages/myInfo/setUp/help/help.wxml</text>
+<view class="padding bg-white margin-bottom card-menu cu-list menu align-center" style="height:100vh">
+<view class="padding" style="height:20vh"></view>
+<view class="cu-item" bindtouchend="showModal" data-target="DialogModal1">
+      <view class="content">
+        <text class="cuIcon-creativefill text-yellow light"></text>
+        <text class="text-grey">卡顿？</text>
+ </view>
+</view>
+<view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">卡顿</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      请您检查网络连接，若网络连接正常，
+      请尝试清除缓存或退出后重新打开本程序
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-yellow light text-yellow light" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-yellow light margin-left" bindtap="hideModal">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cu-item" bindtouchend="showModal" data-target="DialogModal2">
+      <view class="content">
+        <text class="cuIcon-creativefill text-yellow light"></text>
+        <text class="text-grey">打卡界面主要功能?</text>
+      </view>
+    </view>
+<view class="cu-item" bindtouchend="showModal" data-target="DialogModal3">
+      <view class="content">
+        <text class="cuIcon-creativefill text-yellow light"></text>
+        <text class="text-grey">日记界面主要功能?</text>
+      </view>
+    </view>
+<view class="cu-item" bindtouchend="showModal" data-target="DialogModal4">
+      <view class="content">
+        <text class="cuIcon-creativefill text-yellow light"></text>
+        <text class="text-grey">广场主要功能?</text>
+      </view>
+    </view>
+<view class="cu-item" bindtouchend="showModal" data-target="DialogModal5">
+      <view class="content">
+        <text class="cuIcon-creativefill text-yellow light"></text>
+        <text class="text-grey">个人信息主要功能?</text>
+      </view>
+    </view>
+</view>
+<view class="cu-modal {{modalName=='DialogModal2'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">打卡界面功能介绍</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      在打卡界面您可以建立自己的习惯并按时打卡，还可以与自己的微信好友建立习惯养成小分队，监督彼此的习惯养成哦
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-yellow light text-yellow light" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-yellow light margin-left" bindtap="hideModal">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cu-modal {{modalName=='DialogModal3'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">日记界面功能介绍</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      在日记界面您可以记录每天的生活，系统会根据您的日记文字为您计算每天的心情指数，还可以给每篇日记配上美美的图片哦。您还可以在该页面查看以往的日记记录。
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-yellow light text-yellow light" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-yellow light margin-left" bindtap="hideModal">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cu-modal {{modalName=='DialogModal4'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">广场界面功能介绍</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      在广场界面您可以发帖子，查看别人的帖子以及给别人的帖子点赞。在这里您可以分享自己的生活小技巧，学习经验，以及自己的心情等等。
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-yellow light text-yellow light" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-yellow light margin-left" bindtap="hideModal">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cu-modal {{modalName=='DialogModal5'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">个人信息界面功能介绍</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      在个人信息页面，您可以查看自己打卡、日记、帖子的历史记录，可以在我的收藏中查看自己点赞过的帖子，还可以管理自己的情绪值，与其他用户匹配，查看彼此的日记等等。
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-yellow light text-yellow light" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-yellow light margin-left" bindtap="hideModal">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
