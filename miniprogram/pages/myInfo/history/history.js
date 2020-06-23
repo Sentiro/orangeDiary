@@ -4,7 +4,6 @@ Page({
      listDatas:[],
      habitList:[],
      diaryList:[]
-
   },
 
   /**
@@ -43,7 +42,6 @@ Page({
                 else if(aDate<bDate)
                   return 1;
                 else{
-                  console.log(0);
                   return 0;
                 }
               })

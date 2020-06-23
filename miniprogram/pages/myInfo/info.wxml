@@ -99,12 +99,6 @@
   </view>
 </view>
 
-<view class="text-center padding-xl ">
-  <button formType="submit" class="cu-btn bg-yellow round">
-    <text class="text-lg">登出</text>
-  </button>
-</view>
-
 
 
 

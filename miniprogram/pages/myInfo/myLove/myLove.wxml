@@ -1,5 +1,28 @@
 <!--miniprogram/pages/myInfo/myLove/myLove.wxml-->
-<!-- <view class="padding bg-white card-menu cu-list menu" wx:for='{{postList}}' wx:key='index'>
+<view wx-if="{{postList.length==0||postList==null}}">
+<view class="cu-modal {{modalName=='DialogModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      暂无收藏，您可以前往广场页面收藏喜欢的帖子然后回到此处查看哦！
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-yellow light text-yellow light" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-yellow light margin-left" bindtap="hideModal">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
+
+
+<view class="padding bg-white card-menu cu-list menu" wx:for='{{postList}}' wx:key='index'>
 <view>
 <view class="cu-item shadow">
     <view class="cu-list menu-avatar">
@@ -15,7 +38,7 @@
     </view>
     <view class="cu-item" wx:if="{{id!=index}}" bindtap="onTextTouched" data-index='{{index}}'>
     <view class="text-content bg-white" >
-      <wxs src="./posts.wxs" module="intercept"/>
+      <wxs src="myLove.wxs" module="intercept"/>
       <view>{{intercept.substr(item.text)}}</view>
     </view>
     </view>
@@ -25,17 +48,18 @@
     </view>
     </view>
     <view class="grid flex-sub padding-lr col-3 grid-square">
-      <view class="bg-img" style="background-image:url({{img}});" wx:for="{{item.imgs}}" wx:key="index" wx:for-item="img">
+      <view class="bg-img" wx:for="{{item.imgs}}" wx:key="index" wx:for-item="img">
+      <image src="{{img}}"></image>
       </view>
     </view>
     <view class="content text-gray text-right" bindtap='thumbsup' data-id='{{item._id}}'>
     <block wx:if="{{item.state==true}}">
-    <image  src='like.png' class="png" style="width:50rpx;height:50rpx"></image>{{item.likeNum}}
+    <image src="../../posts/shoucang1.png" style="height:50rpx;width:50rpx;"></image>{{item.likeNum}}
     </block> 
       <block wx:if="{{item.state==false}}">
-      <image src='unlike.png' class="png" style="width:40rpx;height:40rpx;"></image>{{item.likeNum}}
+      <image src="../../posts/shoucang.png" style="height:50rpx;width:50rpx;"></image>{{item.likeNum}}
       </block>
     </view>
    </view>
   </view>
-</view> -->
+</view>
