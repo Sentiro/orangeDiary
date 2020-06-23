@@ -23,12 +23,39 @@ App({
         // env: 'my-env-id',
         traceUser: true,
       });
+      //openid
       wx.cloud.callFunction({
         name: 'login',
-        data: {},
-        success: res => {
-          console.log('[云函数] [login] user openid: ', res.result.openid);
-          this.globalData.openid = res.result.openid;
+        success: res1 => {
+          console.log('[云函数] [login] user openid: ', res1.result);
+          this.globalData.openid = res1.result.openid;
+          if (this.getopenidCallback){
+            this.getopenidCallback(res1.result);
+          }
+          //判断是否为新用户
+          wx.cloud.callFunction({
+            name: 'userInfo',
+            data:{
+              _openid: res1.result.openid,
+            },
+            success:res2=>{
+              if(res2.result.data.length==0){
+                  wx.cloud.callFunction({
+                    name:'addUser',
+                    success: (res) => {
+                      console.log('[云函数][setUser]: ',res.result)
+                    },
+                  })
+              }else{
+                console.log('[云函数] [userInfo] : ',res2.result);
+                this.globalData.user=res2.result.data[0];
+                //回调
+                if (this.userInfoCallback){
+                    this.userInfoCallback(res2.user);
+                  }
+              }
+            }
+          })
         },
         fail: err => {
           console.error('[云函数] [login] 调用失败', err)
@@ -37,12 +64,7 @@ App({
           })
         }
       })
-      wx.cloud.callFunction({
-        name: 'userInfo',
-        success:res=>{
-          console.log('[云函数] [userInfo] : ',res.result.event);
-        }
-      })
+      
     }
 
     this.globalData = {
@@ -52,7 +74,8 @@ App({
       userInfo: {},
       logged: false,
       takeSession: false,
-      requestResult: ''
+      requestResult: '',
+      user: ''
       // StatusBar: 0,
       //CustomBar:0,
       //Custom:0
